@@ -1,0 +1,29 @@
+{
+    "name": "nictiz.fhir.nl.r4.labexchange",
+    "version": "0.1.0",
+    "canonical": null,
+    "url": "https://informatiestandaarden.nictiz.nl/wiki/Lab:V3.0.0_Ontwerp_Laboverdacht",
+    "title": "Nictiz FHIR NL R4 Lab Exchange",
+    "description": "Nictiz NL package of FHIR R4 conformance resources for Lab Exchange.",
+    "keywords": [
+        "Lab",
+        "Lab Exchange",
+        "nl",
+        "Nictiz",
+        "MedMij"
+    ],
+    "author": "nictiz",
+    "maintainers": [
+        {
+            "name": "Nictiz",
+            "url": "https://www.nictiz.nl"
+        }
+    ],
+    "license": "CC0-1.0",
+    "devDependencies": null,
+    "canonicals": null,
+    "dependencies": {
+        "hl7.fhir.r4.core": "4.0.1",
+        "nictiz.fhir.nl.r4.zib2020": ""
+    }
+}
