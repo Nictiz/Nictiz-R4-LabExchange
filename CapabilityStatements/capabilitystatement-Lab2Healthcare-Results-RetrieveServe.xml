@@ -22,37 +22,95 @@
     <format value="json"/>
     <rest>
         <mode value="client"/>
+        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on Observation, and MAY support its searchParameters and/or the $lastn operation. It SHALL support read on Observation and secondary resources, when referenced but not included in search results. Note that inclusion of referenced resources may happen regardless of searchInclude by the client."/>
         <resource>
             <type value="Observation"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="search-type"/>
             </interaction>
-            <searchInclude value="Observation:subject"/>
-            <searchInclude value="Observation:specimen"/>
-            <searchInclude value="Observation:performer"/>
-            <searchInclude value="Observation:has-member"/>
+            <searchInclude value="Observation:subject">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:specimen">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:performer">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:has-member">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
             <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <name value="patient"/>
                 <type value="reference"/>
+                <documentation value="Support is 'MAY' because an alternative solution for the correct patient context may exist. In absence of an alternative solution, this parameter is 'SHALL'"/>
             </searchParam>
             <searchParam>
-                <name value="subject"/>
-                <type value="reference"/>
-            </searchParam>
-            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <name value="code"/>
                 <type value="token"/>
             </searchParam>
             <searchParam>
-                <name value="subject"/>
-                <type value="reference"/>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="date"/>
+                <type value="date"/>
             </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="_count"/>
+                <type value="number"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="max"/>
+                <type value="number"/>
+                <documentation value="Relevant only for operation $lastn"/>
+            </searchParam>
+            <operation>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="lastn"/>
+                <definition value="http://hl7.org/fhir/OperationDefinition/Observation-lastn"/>
+                <documentation value="Last N Observations Query"/>
+            </operation>
         </resource>
         <resource>
             <type value="Patient"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
@@ -60,6 +118,9 @@
             <type value="Organization"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
@@ -88,6 +149,9 @@
             <type value="Specimen"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
@@ -95,31 +159,103 @@
             <type value="Device"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
     </rest>
     <rest>
         <mode value="server"/>
+        <documentation value="A server is expected to support both xml and json. It SHALL support search-type on Observation, its searchParameters and the $lastn operation. It SHALL support read on Observation and secondary resources, unless it includes those when they are referenced in search results"/>
         <resource>
             <type value="Observation"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
-            <!-- To support read from an Observation.hasMember reference -->
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="search-type"/>
             </interaction>
-            <searchInclude value="Observation:subject"/>
-            <searchInclude value="Observation:specimen"/>
-            <searchInclude value="Observation:performer"/>
-            <searchInclude value="Observation:has-member"/>
+            <searchInclude value="Observation:subject">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:specimen">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:performer">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:has-member">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="patient"/>
+                <type value="reference"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="code"/>
+                <type value="token"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="date"/>
+                <type value="date"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="_count"/>
+                <type value="number"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="max"/>
+                <type value="number"/>
+                <documentation value="Relevant only for operation $lastn"/>
+            </searchParam>
+            <operation>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="lastn"/>
+                <definition value="http://hl7.org/fhir/OperationDefinition/Observation-lastn"/>
+                <documentation value="Last N Observations Query"/>
+            </operation>
         </resource>
         <resource>
             <type value="Patient"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
@@ -127,6 +263,9 @@
             <type value="Organization"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
@@ -155,6 +294,9 @@
             <type value="Specimen"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
@@ -162,6 +304,9 @@
             <type value="Device"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>

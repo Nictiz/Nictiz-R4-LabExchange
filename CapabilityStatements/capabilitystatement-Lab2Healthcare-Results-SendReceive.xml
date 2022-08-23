@@ -22,13 +22,20 @@
     <format value="json"/>
     <rest>
         <mode value="client"/>
+        <documentation value="A client is expected to support xml and/or json. A client is not required to maintain a record of each server it created resources on, and thus not required to support 'update'."/>
         <resource>
             <type value="Observation"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
         </resource>
@@ -36,9 +43,15 @@
             <type value="Patient"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
         </resource>
@@ -46,9 +59,15 @@
             <type value="Organization"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
         </resource>
@@ -77,9 +96,15 @@
             <type value="Specimen"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
         </resource>
@@ -87,43 +112,84 @@
             <type value="Device"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
         </resource>
     </rest>
     <rest>
         <mode value="server"/>
+        <documentation value="A server is expected to support xml and json. A server SHOULD be able to process 'create' as 'update' requests when it already has that resource. A server SHALL support create on Observation and Organization (Observation.performer). A server is expected to have a pre-existing Patient resource it MAY update. Create/update of other resources MAY be supported, but they are not, then references to them SHALL NOT be processed."/>
         <resource>
             <type value="Observation"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="update"/>
+            </interaction>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
             </interaction>
         </resource>
         <resource>
             <type value="Patient"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="update"/>
+                <documentation value="A server MAY choose to update its pre-existing Patient resource"/>
+            </interaction>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
+                <documentation value="A server SHALL make sure it connects results to the correct Patient. The server may read its own Patient resource to that end, and/or resolve it from the client"/>
             </interaction>
         </resource>
         <resource>
             <type value="Organization"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
+            <documentation value="Results may have been performed by a previously unknown organization."/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
+                <documentation value="A server SHALL make sure it connects results to the correct Organization. The server may read its own Organization resource to that end, and/or resolve it from the client"/>
             </interaction>
         </resource>
         <!--<resource>
@@ -151,12 +217,21 @@
             <type value="Specimen"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
@@ -164,12 +239,21 @@
             <type value="Device"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="create"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="update"/>
             </interaction>
             <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
                 <code value="read"/>
             </interaction>
         </resource>
