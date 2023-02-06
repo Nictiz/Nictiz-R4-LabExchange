@@ -460,7 +460,7 @@
       <path value="DiagnosticReport.identifier" />
       <short value="OrderId" />
       <definition value="Order identification number. This is a number/identification that is communicated in the order and is included in the result. The ordering provider assigns an identification to his order: this is also known as the Placer Order ID. The filler also assigns an identification to the order/result: this is also known as the Filler Order ID" />
-      <comment value="Usually assigned by the Information System of the diagnostic service provider (filler id)." />
+      <comment value="Usually the Placer ID." />
       <requirements value="Need to know what identifier to use when making queries about this report from the source laboratory, and for linking to the report outside FHIR context." />
       <alias value="ReportID" />
       <alias value="Filler ID" />
@@ -533,8 +533,8 @@
       </extension>
       <path value="DiagnosticReport.basedOn" />
       <short value="Order details" />
-      <definition value="Ordering provider and order details as part of the order request" />
-      <comment value="Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single test result resource. Note that there are also cases where one request leads to multiple reports.&#xD;&#xA;&#xD;&#xA;[work in progress. zenders worden nog niet geacht om te sturen en ontvangers hoeven niet te denken dat service request zoals ze het hebben ontvangen ook zo gedefinieerd zal zijn]" />
+      <definition value="Ordering provider and order details as part of the order request.&#xD;&#xA;&#xD;&#xA;At the moment of creating this profile, the profile on ServiceRequest is not yet created. Therefore, the sending systems are not yet expected to send a ServiceRequest and receiving systems have to be aware that the definition of ServiceRequest is not yet final and may be different from what they currently receive." />
+      <comment value="Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single test result resource. Note that there are also cases where one request leads to multiple reports." />
       <requirements value="This allows tracing of authorization for the report and tracking whether proposals/recommendations were acted upon." />
       <alias value="Request" />
       <alias value="Aanvraaggegevens" />
@@ -2055,6 +2055,7 @@
       <path value="DiagnosticReport.identifier" />
       <short value="OrderId" />
       <definition value="Order identification number. This is a number/identification that is communicated in the order and is included in the result. The ordering provider assigns an identification to his order: this is also known as the Placer Order ID. The filler also assigns an identification to the order/result: this is also known as the Filler Order ID" />
+      <comment value="Usually the Placer ID." />
       <alias value="Aanvraagnummer" />
       <min value="1" />
       <mustSupport value="true" />
@@ -2066,8 +2067,7 @@
     <element id="DiagnosticReport.basedOn">
       <path value="DiagnosticReport.basedOn" />
       <short value="Order details" />
-      <definition value="Ordering provider and order details as part of the order request" />
-      <comment value="Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single test result resource. Note that there are also cases where one request leads to multiple reports.&#xD;&#xA;&#xD;&#xA;[work in progress. zenders worden nog niet geacht om te sturen en ontvangers hoeven niet te denken dat service request zoals ze het hebben ontvangen ook zo gedefinieerd zal zijn]" />
+      <definition value="Ordering provider and order details as part of the order request.&#xD;&#xA;&#xD;&#xA;At the moment of creating this profile, the profile on ServiceRequest is not yet created. Therefore, the sending systems are not yet expected to send a ServiceRequest and receiving systems have to be aware that the definition of ServiceRequest is not yet final and may be different from what they currently receive." />
       <alias value="Aanvraaggegevens" />
       <type>
         <code value="Reference" />
