@@ -768,13 +768,12 @@
       <type>
         <code value="CodeableConcept" />
       </type>
-      <fixedCodeableConcept>
+      <patternCodeableConcept>
         <coding>
           <system value="http://terminology.hl7.org/CodeSystem/v2-0074" />
           <code value="LAB" />
-          <display value="Laboratory" />
         </coding>
-      </fixedCodeableConcept>
+      </patternCodeableConcept>
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -2124,13 +2123,12 @@
       <definition value="A code that classifies the general type of observation being made." />
       <min value="1" />
       <max value="1" />
-      <fixedCodeableConcept>
+      <patternCodeableConcept>
         <coding>
           <system value="http://terminology.hl7.org/CodeSystem/v2-0074" />
           <code value="LAB" />
-          <display value="Laboratory" />
         </coding>
-      </fixedCodeableConcept>
+      </patternCodeableConcept>
       <binding>
         <strength value="required" />
         <description value="Code for Diagnostic Service Codes" />
