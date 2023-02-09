@@ -115,11 +115,6 @@
         <map value="Observation[classCode=OBS, moodCode=EVN]" />
       </mapping>
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.1" />
-        <comment value="LaboratoryTestResult" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4254" />
         <comment value="LaboratoryTestResult" />
@@ -651,11 +646,6 @@
         <map value="statusCode  Note: final and amended are distinguished by whether observation is the subject of a ControlAct event of type &quot;revise&quot;" />
       </mapping>
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.6" />
-        <comment value="ResultStatus" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4287" />
         <comment value="ResultStatus" />
@@ -895,11 +885,6 @@
         <map value="inboundRelationship[typeCode=COMP].source[classCode=LIST, moodCode=EVN, code &lt; LabService].code" />
       </mapping>
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.7" />
-        <comment value="ResultType" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4289" />
         <comment value="ResultType" />
@@ -978,11 +963,6 @@
       <mapping>
         <identity value="rim" />
         <map value="code" />
-      </mapping>
-      <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.4" />
-        <comment value="PanelOrBattery" />
       </mapping>
       <mapping>
         <identity value="lu-dataset-2" />
@@ -1309,11 +1289,6 @@
         <map value=".participation[typeCode=PRF]" />
       </mapping>
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.35" />
-        <comment value="Performer::HealthcareProvider" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4294" />
         <comment value="Performer" />
@@ -1450,11 +1425,6 @@
         <map value="participation[typeCode=SBJ]" />
       </mapping>
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.2" />
-        <comment value="Specimen" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4266" />
         <comment value="Specimen" />
@@ -1526,11 +1496,6 @@
       <mapping>
         <identity value="rim" />
         <map value="outboundRelationship[typeCode=COMP].target" />
-      </mapping>
-      <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.3" />
-        <comment value="LaboratoryTest" />
       </mapping>
       <mapping>
         <identity value="lu-dataset-2" />
@@ -1899,11 +1864,6 @@
         <map value="inboundRelationship[typeCode=&quot;SPRT&quot;].source[classCode=OBS, moodCode=EVN, code=LOINC:48767-8].value (type=ST)" />
       </mapping>
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.5" />
-        <comment value="Comment" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4288" />
         <comment value="Comment" />
@@ -2040,11 +2000,6 @@
       <definition value="The findings and interpretation of diagnostic tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports." />
       <alias value="LaboratoriumUitslag" />
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.1" />
-        <comment value="LaboratoryTestResult" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4254" />
         <comment value="LaboratoryTestResult" />
@@ -2084,11 +2039,6 @@
       <definition value="The status of the laboratory test result .If the laboratory test is an panel/cluster, this status reflects the status of the whole panel/cluster. If the status item per subtest is used too, this status must be in accordance with these status values." />
       <alias value="ResultaatStatus" />
       <mustSupport value="true" />
-      <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.6" />
-        <comment value="ResultStatus" />
-      </mapping>
       <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4287" />
@@ -2146,11 +2096,6 @@
         <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.1--20200901000000" />
       </binding>
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.7" />
-        <comment value="ResultType" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4289" />
         <comment value="ResultType" />
@@ -2167,11 +2112,6 @@
         <description value="PanelOrBatteryCodelist" />
         <valueSet value="https://decor.nictiz.nl/ad/#/lu-/terminology/valueset/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5" />
       </binding>
-      <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.4" />
-        <comment value="PanelOrBattery" />
-      </mapping>
       <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4286" />
@@ -2207,11 +2147,6 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.35" />
-        <comment value="Performer::HealthcareProvider" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4294" />
         <comment value="Performer" />
@@ -2239,11 +2174,6 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.2" />
-        <comment value="Specimen" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4266" />
         <comment value="Specimen" />
@@ -2260,11 +2190,6 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.3" />
-        <comment value="LaboratoryTest" />
-      </mapping>
-      <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4255" />
         <comment value="LaboratoryTest" />
@@ -2276,11 +2201,6 @@
       <definition value="Comments, such as a textual interpretation or advice accompanying the result, for example." />
       <alias value="Toelichting" />
       <mustSupport value="true" />
-      <mapping>
-        <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
-        <map value="NL-CM:13.1.5" />
-        <comment value="Comment" />
-      </mapping>
       <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4288" />
