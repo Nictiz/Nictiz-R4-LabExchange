@@ -93,17 +93,10 @@
         </discriminator>
         <rules value="open" />
       </slicing>
-      <short value="Classification of type of observation" />
-      <definition value="A code that classifies the general type of observation being made." />
       <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once. The level of granularity is defined by the category concepts in the value set." />
       <alias value="ResultaatType" />
       <min value="1" />
       <mustSupport value="true" />
-      <binding>
-        <strength value="preferred" />
-        <description value="Codes for high level observation categories." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/observation-category" />
-      </binding>
     </element>
     <element id="DiagnosticReport.category:laboratoryCategory">
       <path value="DiagnosticReport.category" />
@@ -112,15 +105,8 @@
       <definition value="A code that classifies the general type of observation being made." />
       <min value="1" />
       <max value="1" />
-      <patternCodeableConcept>
-        <coding>
-          <system value="http://terminology.hl7.org/CodeSystem/v2-0074" />
-          <code value="LAB" />
-        </coding>
-      </patternCodeableConcept>
       <binding>
         <strength value="required" />
-        <description value="Code for Diagnostic Service Codes" />
       </binding>
     </element>
     <element id="DiagnosticReport.category:resultType">
@@ -131,7 +117,6 @@
       <alias value="ResultaatType" />
       <binding>
         <strength value="required" />
-        <description value="Codes for high level observation categories." />
         <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.1--20200901000000" />
       </binding>
       <mapping>
@@ -149,7 +134,7 @@
       <binding>
         <strength value="extensible" />
         <description value="PanelOrBatteryCodelist" />
-        <valueSet value="https://decor.nictiz.nl/ad/#/lu-/terminology/valueset/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5" />
+        <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5--20200901000000" />
       </binding>
       <mapping>
         <identity value="lu-dataset-2" />
@@ -178,7 +163,7 @@
     <element id="DiagnosticReport.performer">
       <path value="DiagnosticReport.performer" />
       <short value="Performer" />
-      <definition value="The healthcare provider and/or organization where or by whom the LaboratoryTestResult was performed. This is not necessarily the actual performer of (all) laboratory tests. Specialization: because of: Definition." />
+      <definition value="The organization where the LaboratoryTestResult was performed. This is not necessarily the actual performer of (all) laboratory tests." />
       <alias value="Uitvoerder" />
       <type>
         <code value="Reference" />
@@ -190,17 +175,6 @@
         <map value="lu-concept-v2-4294" />
         <comment value="Performer" />
       </mapping>
-    </element>
-    <element id="DiagnosticReport.resultsInterpreter">
-      <path value="DiagnosticReport.resultsInterpreter" />
-      <type>
-        <code value="Reference" />
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/PractitionerRole" />
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization" />
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/CareTeam" />
-        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization" />
-      </type>
     </element>
     <element id="DiagnosticReport.specimen">
       <path value="DiagnosticReport.specimen" />
