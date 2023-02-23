@@ -50,7 +50,7 @@
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://hl7.eu/fhir/ig/xeh/StructureDefinition/composition-DiagnosticReportReference" />
+        <profile value="http://nictiz.nl/fhir/StructureDefinition/LaboratoryExchange-DiagnosticReportReference" />
       </type>
     </element>
     <element id="Composition.type">
