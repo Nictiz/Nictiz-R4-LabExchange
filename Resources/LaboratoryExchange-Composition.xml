@@ -97,24 +97,13 @@
       <path value="Composition.section.entry" />
       <type>
         <code value="Reference" />
-        <profile value="http://nictiz.nl/fhir/StructureDefinition/Labexchange-DiagnosticReport" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult" />
       </type>
       <mapping>
         <identity value="lu-dataset-2" />
         <map value="lu-concept-v2-4255" />
         <comment value="LaboratoryTest" />
       </mapping>
-    </element>
-    <element id="Composition.section.entry.category">
-      <path value="Composition.section.entry.category" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="$this" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-      <min value="1" />
     </element>
   </differential>
 </StructureDefinition>
