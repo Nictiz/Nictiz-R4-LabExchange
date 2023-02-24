@@ -3,7 +3,7 @@
   <id value="Labexchange-Composition" />
   <url value="http://nictiz.nl/fhir/StructureDefinition/Labexchange-Composition" />
   <name value="LabexchangeComposition" />
-  <title value="Laboratory Exchange Composition" />
+  <title value="LaboratoryExchange Composition" />
   <status value="draft" />
   <publisher value="Nictiz" />
   <contact>
@@ -15,7 +15,13 @@
     </telecom>
   </contact>
   <description value="Laboratory Report composition. &#xD;&#xA;&#xD;&#xA;A composition is a set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained." />
+  <copyright value="CC0" />
   <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="lu-dataset-2" />
+    <uri value="https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00" />
+    <name value="Dataset Laboratory Exchange" />
+  </mapping>
   <kind value="resource" />
   <abstract value="false" />
   <type value="Composition" />
@@ -26,32 +32,6 @@
       <path value="Composition" />
       <short value="Laboratory Report composition" />
       <definition value="A composition is a set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained." />
-      <mapping>
-        <identity value="lu-dataset-2" />
-        <map value="lu-concept-v2-4254" />
-        <comment value="LaboratoryTestResult" />
-      </mapping>
-    </element>
-    <element id="Composition.extension">
-      <path value="Composition.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-      <min value="1" />
-    </element>
-    <element id="Composition.extension:diagnostic-report">
-      <path value="Composition.extension" />
-      <sliceName value="diagnostic-report" />
-      <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://nictiz.nl/fhir/StructureDefinition/LaboratoryExchange-DiagnosticReportReference" />
-      </type>
     </element>
     <element id="Composition.type">
       <path value="Composition.type" />
@@ -80,6 +60,11 @@
         <comment value="Patient" />
       </mapping>
     </element>
+    <element id="Composition.section">
+      <path value="Composition.section" />
+      <min value="1" />
+      <max value="1" />
+    </element>
     <element id="Composition.section.code">
       <path value="Composition.section.code" />
       <binding>
@@ -95,15 +80,12 @@
     </element>
     <element id="Composition.section.entry">
       <path value="Composition.section.entry" />
+      <min value="1" />
+      <max value="1" />
       <type>
         <code value="Reference" />
-        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/LaboratoryExchange-DiagnosticReport" />
       </type>
-      <mapping>
-        <identity value="lu-dataset-2" />
-        <map value="lu-concept-v2-4255" />
-        <comment value="LaboratoryTest" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>
