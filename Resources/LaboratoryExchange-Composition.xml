@@ -3,7 +3,7 @@
   <id value="Labexchange-Composition" />
   <url value="http://nictiz.nl/fhir/StructureDefinition/Labexchange-Composition" />
   <name value="LabexchangeComposition" />
-  <title value="LaboratoryExchange Composition" />
+  <title value="Labexchange Composition" />
   <status value="draft" />
   <publisher value="Nictiz" />
   <contact>
@@ -15,7 +15,7 @@
     </telecom>
   </contact>
   <description value="Laboratory Report composition. &#xD;&#xA;&#xD;&#xA;A composition is a set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained." />
-  <copyright value="CC0" />
+  <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
   <fhirVersion value="4.0.1" />
   <mapping>
     <identity value="lu-dataset-2" />
