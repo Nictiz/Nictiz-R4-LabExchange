@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/R4/capabilitystatement.xsd">
+<CapabilityStatement xmlns="http://hl7.org/fhir">
     <id value="Lab2Healthcare-Results-RetrieveServe"/>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Healthcare-Results-RetrieveServe"/>
     <name value="Lab2Healthcare_Results_RetrieveServe"/>
@@ -157,7 +157,7 @@
         </resource>
         <resource>
             <type value="Device"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.SpecimenSource"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
@@ -302,7 +302,7 @@
         </resource>
         <resource>
             <type value="Device"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.SpecimenSource"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
