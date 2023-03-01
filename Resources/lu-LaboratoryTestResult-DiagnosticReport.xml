@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <url value="http://nictiz.nl/fhir/StructureDefinition/Labexchange-DiagnosticReport" />
-  <name value="LabexchangeDiagnosticReport" />
-  <title value="Laboratory Exchange DiagnosticReport" />
+  <id value="lu-LaboratoryTestResult-DiagnosticReport" />
+  <url value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport" />
+  <name value="LuLaboratoryTestResultDiagnosticReport" />
+  <title value="lu LaboratoryTestResult DiagnosticReport" />
   <status value="draft" />
   <publisher value="Nictiz" />
   <contact>

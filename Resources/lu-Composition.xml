@@ -84,7 +84,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/LaboratoryExchange-DiagnosticReport" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport" />
       </type>
     </element>
   </differential>
