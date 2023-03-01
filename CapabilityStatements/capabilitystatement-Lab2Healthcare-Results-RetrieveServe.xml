@@ -157,7 +157,7 @@
         </resource>
         <resource>
             <type value="Device"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.SpecimenSource"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
@@ -302,7 +302,7 @@
         </resource>
         <resource>
             <type value="Device"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.SpecimenSource"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
