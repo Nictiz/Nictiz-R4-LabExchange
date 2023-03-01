@@ -24,9 +24,9 @@
     <name value="HCIM LaboratoryTestResult-v4.6(2020EN)" />
   </mapping>
   <mapping>
-    <identity value="lu-dataset-2-TEST" />
+    <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
     <uri value="https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00" />
-    <name value="Dataset Laboratory Exchange" />
+    <name value="ART-DECOR Dataset Laboratory Exchange 2021-02-22" />
   </mapping>
   <kind value="resource" />
   <abstract value="true" />
@@ -37,10 +37,9 @@
     <element id="DiagnosticReport">
       <path value="DiagnosticReport" />
       <short value="LaboratoryTestResult" />
-      <definition value="The findings and interpretation of diagnostic tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports." />
       <alias value="LaboratoriumUitslag" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4254" />
         <comment value="LaboratoryTestResult" />
       </mapping>
@@ -54,8 +53,9 @@
       <min value="1" />
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4473" />
+        <comment value="OrderId" />
       </mapping>
     </element>
     <element id="DiagnosticReport.basedOn">
@@ -69,18 +69,19 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4410" />
+        <comment value="Order details" />
       </mapping>
     </element>
     <element id="DiagnosticReport.status">
       <path value="DiagnosticReport.status" />
       <short value="ResultStatus" />
-      <definition value="The status of the laboratory test result .If the laboratory test is an panel/cluster, this status reflects the status of the whole panel/cluster. If the status item per subtest is used too, this status must be in accordance with these status values." />
+      <definition value="The status of the laboratory test result. If the laboratory test is an panel/cluster, this status reflects the status of the whole panel/cluster. If the status item per subtest is used too, this status must be in accordance with these status values." />
       <alias value="ResultaatStatus" />
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4287" />
         <comment value="ResultStatus" />
       </mapping>
@@ -95,7 +96,6 @@
         <rules value="open" />
       </slicing>
       <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once. The level of granularity is defined by the category concepts in the value set." />
-      <alias value="ResultaatType" />
       <min value="1" />
       <mustSupport value="true" />
     </element>
@@ -121,7 +121,7 @@
         <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.1--20200901000000" />
       </binding>
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4289" />
         <comment value="ResultType" />
       </mapping>
@@ -138,7 +138,7 @@
         <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5--20200901000000" />
       </binding>
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4286" />
         <comment value="PanelOrBattery" />
       </mapping>
@@ -152,7 +152,7 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4303" />
         <comment value="Patient" />
       </mapping>
@@ -172,7 +172,7 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4294" />
         <comment value="Performer" />
       </mapping>
@@ -188,7 +188,7 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4266" />
         <comment value="Specimen" />
       </mapping>
@@ -204,7 +204,7 @@
       </type>
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4255" />
         <comment value="LaboratoryTest" />
       </mapping>
@@ -216,7 +216,7 @@
       <alias value="Toelichting" />
       <mustSupport value="true" />
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4288" />
         <comment value="Comment" />
       </mapping>
