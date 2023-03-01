@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="Labexchange-Composition" />
-  <url value="http://nictiz.nl/fhir/StructureDefinition/Labexchange-Composition" />
-  <name value="LabexchangeComposition" />
-  <title value="Labexchange Composition" />
+  <id value="lu-Composition" />
+  <url value="http://nictiz.nl/fhir/StructureDefinition/lu-Composition" />
+  <name value="LuComposition" />
+  <title value="lu Composition" />
   <status value="draft" />
   <publisher value="Nictiz" />
   <contact>
@@ -18,9 +18,9 @@
   <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
   <fhirVersion value="4.0.1" />
   <mapping>
-    <identity value="lu-dataset-2" />
+    <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
     <uri value="https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00" />
-    <name value="Dataset Laboratory Exchange" />
+    <name value="ART-DECOR Dataset Laboratory Exchange 2021-02-22" />
   </mapping>
   <kind value="resource" />
   <abstract value="false" />
@@ -55,7 +55,7 @@
         <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient" />
       </type>
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4303" />
         <comment value="Patient" />
       </mapping>
@@ -73,7 +73,7 @@
         <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5--20200901000000" />
       </binding>
       <mapping>
-        <identity value="lu-dataset-2" />
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4286" />
         <comment value="PanelOrBattery" />
       </mapping>
