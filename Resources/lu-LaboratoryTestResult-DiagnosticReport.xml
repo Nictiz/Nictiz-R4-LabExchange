@@ -14,8 +14,8 @@
       <use value="work" />
     </telecom>
   </contact>
-  <description value="A Diagnostic Report for Laboratory exchange based on the Dutch Health and Care Information models (Dutch: Zorginformatiebouwsteen or ZIB)  version 4.6, release 2020." />
-  <purpose value="# Purpose of HCIM\n\nLaboratory tests are done for the purpose of diagnosing and preventing disease and follow-up on the effects of treatment." />
+  <description value="A laboratory result describes the result of a laboratory analysis. These are specimen-oriented tests as performed in laboratories such as Clinical Chemistry, Serology, Microbiology, etc. In addition to the results of tests with a singular result, this concept can also contain the results of more complex tests with multiple results or a ‘panel'." />
+  <purpose value="This DiagnosticReport profile serves both a documentation and validation purpose for the Lab2Zorg transaction &quot;Health professional receives lab results resulting from a request&quot;. The relevant elements in this profile contain mappings to the LabExchange dataset (https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00) as well as constrains as defined in the transaction (https://decor.nictiz.nl/ad/#/lu-/scenarios/scenarios/2.16.840.1.113883.2.4.3.11.60.25.4.35/2022-11-28T16:53:30) to give implementers guidance." />
   <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
   <fhirVersion value="4.0.1" />
   <mapping>
@@ -37,6 +37,7 @@
     <element id="DiagnosticReport">
       <path value="DiagnosticReport" />
       <short value="LaboratoryTestResult" />
+      <definition value="At the time of creation, there is no nl-core DiagnosticReport profile available as there are no other use cases identified for a nl-core profile to be relevant. This profile shall only be used for the designated use case (&quot;Health professional receives lab results resulting from a request&quot;).  It is derived from the FHIR R4 core and contains references to nl-core profiles." />
       <alias value="LaboratoriumUitslag" />
       <mapping>
         <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
@@ -156,10 +157,6 @@
         <map value="lu-concept-v2-4303" />
         <comment value="Patient" />
       </mapping>
-    </element>
-    <element id="DiagnosticReport.issued">
-      <path value="DiagnosticReport.issued" />
-      <mustSupport value="true" />
     </element>
     <element id="DiagnosticReport.performer">
       <path value="DiagnosticReport.performer" />
