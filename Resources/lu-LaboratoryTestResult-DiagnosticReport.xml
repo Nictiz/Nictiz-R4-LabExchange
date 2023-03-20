@@ -2,6 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-LaboratoryTestResult-DiagnosticReport" />
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport" />
+  <version value="3.0.0-beta.2" />
   <name value="LuLaboratoryTestResultDiagnosticReport" />
   <title value="lu LaboratoryTestResult DiagnosticReport" />
   <status value="draft" />

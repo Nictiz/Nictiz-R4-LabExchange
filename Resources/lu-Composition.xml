@@ -2,6 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-Composition" />
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-Composition" />
+  <version value="3.0.0-beta.2" />
   <name value="LuComposition" />
   <title value="lu Composition" />
   <status value="draft" />
