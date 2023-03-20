@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/R4/capabilitystatement.xsd">
+<CapabilityStatement xmlns="http://hl7.org/fhir">
     <id value="Lab2Healthcare-Results-SendReceive"/>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Healthcare-Results-SendReceive"/>
     <name value="Lab2Healthcare_Results_SendReceive"/>
     <status value="draft"/>
-    <date value="2022-03-30"/>
+    <date value="2023-03-20"/>
     <publisher value="Nictiz"/>
     <contact>
         <name value="Nictiz"/>
@@ -110,7 +110,7 @@
         </resource>
         <resource>
             <type value="Device"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.SpecimenSource"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
@@ -237,7 +237,7 @@
         </resource>
         <resource>
             <type value="Device"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.SpecimenSource"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>

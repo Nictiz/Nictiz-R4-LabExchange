@@ -1,0 +1,19 @@
+main branch: origin/main
+ignored issues: known-issues.yml
+igs:
+  - Resources
+  - nictiz.fhir.nl.r4.nl-core#0.8.0-beta.1
+
+patterns:
+  profiles: Resources/*.xml
+  CapabilityStatements: CapabilityStatements/*.xml
+  
+steps:
+  validate profiles:
+    description: Validate the profiles using the profile for R4 profiles
+    patterns: profiles
+    profile: http://nictiz.nl/fhir/StructureDefinition/ProfilingGuidelinesR4-StructureDefinitions
+  validate CapabilityStatements:
+    description: Validate the CapabilityStatements
+    patterns: CapabilityStatements
+    

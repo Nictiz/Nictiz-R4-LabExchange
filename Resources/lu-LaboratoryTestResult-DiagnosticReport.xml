@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="lu-LaboratoryTestResult-DiagnosticReport" />
+  <url value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport" />
+  <version value="3.0.0-beta.2" />
+  <name value="LuLaboratoryTestResultDiagnosticReport" />
+  <title value="lu LaboratoryTestResult DiagnosticReport" />
+  <status value="draft" />
+  <publisher value="Nictiz" />
+  <contact>
+    <name value="Nictiz" />
+    <telecom>
+      <system value="url" />
+      <value value="https://www.nictiz.nl" />
+      <use value="work" />
+    </telecom>
+  </contact>
+  <description value="A laboratory result describes the result of a laboratory analysis. These are specimen-oriented tests as performed in laboratories such as Clinical Chemistry, Serology, Microbiology, etc. In addition to the results of tests with a singular result, this concept can also contain the results of more complex tests with multiple results or a ‘panel'." />
+  <purpose value="This DiagnosticReport profile serves both a documentation and validation purpose for the Lab2Zorg transaction &quot;Health professional receives lab results resulting from a request&quot;. The relevant elements in this profile contain mappings to the LabExchange dataset (https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00) as well as constrains as defined in the transaction (https://decor.nictiz.nl/ad/#/lu-/scenarios/scenarios/2.16.840.1.113883.2.4.3.11.60.25.4.35/2022-11-28T16:53:30) to give implementers guidance." />
+  <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="hcim-laboratorytestresult-v4.6-2020EN" />
+    <uri value="https://zibs.nl/wiki/LaboratoryTestResult-v4.6(2020EN)" />
+    <name value="HCIM LaboratoryTestResult-v4.6(2020EN)" />
+  </mapping>
+  <mapping>
+    <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+    <uri value="https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00" />
+    <name value="ART-DECOR Dataset Laboratory Exchange 2021-02-22" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="true" />
+  <type value="DiagnosticReport" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="DiagnosticReport">
+      <path value="DiagnosticReport" />
+      <short value="LaboratoryTestResult" />
+      <definition value="At the time of creation, there is no nl-core DiagnosticReport profile available as there are no other use cases identified for a nl-core profile to be relevant. This profile shall only be used for the designated use case (&quot;Health professional receives lab results resulting from a request&quot;).  It is derived from the FHIR R4 core and contains references to nl-core profiles." />
+      <alias value="LaboratoriumUitslag" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4254" />
+        <comment value="LaboratoryTestResult" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.identifier">
+      <path value="DiagnosticReport.identifier" />
+      <short value="OrderId" />
+      <definition value="Order identification number. This is a number/identification that is communicated in the order and is included in the result. The ordering provider assigns an identification to his order: this is also known as the Placer Order ID. The filler also assigns an identification to the order/result: this is also known as the Filler Order ID" />
+      <comment value="Usually the Placer ID." />
+      <alias value="Aanvraagnummer" />
+      <min value="1" />
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4473" />
+        <comment value="OrderId" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.basedOn">
+      <path value="DiagnosticReport.basedOn" />
+      <short value="Order details" />
+      <definition value="Ordering provider and order details as part of the order request.&#xD;&#xA;&#xD;&#xA;At the moment of creating this profile, the profile on ServiceRequest is not yet created. Therefore, the sending systems are not yet expected to send a ServiceRequest and receiving systems have to be aware that the definition of ServiceRequest is not yet final and may be different from what they currently receive." />
+      <alias value="Aanvraaggegevens" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest" />
+      </type>
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4410" />
+        <comment value="Order details" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.status">
+      <path value="DiagnosticReport.status" />
+      <short value="ResultStatus" />
+      <definition value="The status of the laboratory test result. If the laboratory test is an panel/cluster, this status reflects the status of the whole panel/cluster. If the status item per subtest is used too, this status must be in accordance with these status values." />
+      <alias value="ResultaatStatus" />
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4287" />
+        <comment value="ResultStatus" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.category">
+      <path value="DiagnosticReport.category" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="$this" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once. The level of granularity is defined by the category concepts in the value set." />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="DiagnosticReport.category:laboratoryCategory">
+      <path value="DiagnosticReport.category" />
+      <sliceName value="laboratoryCategory" />
+      <short value="Classification of type of observation" />
+      <definition value="A code that classifies the general type of observation being made." />
+      <min value="1" />
+      <max value="1" />
+      <binding>
+        <strength value="required" />
+      </binding>
+    </element>
+    <element id="DiagnosticReport.category:resultType">
+      <path value="DiagnosticReport.category" />
+      <sliceName value="resultType" />
+      <short value="ResultType" />
+      <definition value="The type of result defines the laboratory specialty under which the test is categorized." />
+      <alias value="ResultaatType" />
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.1--20200901000000" />
+      </binding>
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4289" />
+        <comment value="ResultType" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.code">
+      <path value="DiagnosticReport.code" />
+      <short value="PanelOrBattery" />
+      <definition value="For laboratory tests comprising multiple subtests and often requested together as a whole, this concept contains the name of the compound request (often indicated as a ‘panel’, ‘battery’ or ‘cluster’). Examples include: blood gases and EBV serology." />
+      <alias value="Onderzoek" />
+      <mustSupport value="true" />
+      <binding>
+        <strength value="extensible" />
+        <description value="PanelOrBatteryCodelist" />
+        <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5--20200901000000" />
+      </binding>
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4286" />
+        <comment value="PanelOrBattery" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.subject">
+      <path value="DiagnosticReport.subject" />
+      <short value="Patient" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient" />
+      </type>
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4303" />
+        <comment value="Patient" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.performer">
+      <path value="DiagnosticReport.performer" />
+      <short value="Performer" />
+      <definition value="The organization where the LaboratoryTestResult was performed. This is not necessarily the actual performer of (all) laboratory tests." />
+      <alias value="Uitvoerder" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization" />
+      </type>
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4294" />
+        <comment value="Performer" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.specimen">
+      <path value="DiagnosticReport.specimen" />
+      <short value="Specimen" />
+      <definition value="Container of the Specimen concept. This container contains all data elements of the Specimen concept." />
+      <alias value="Monster" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen" />
+      </type>
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4266" />
+        <comment value="Specimen" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.result">
+      <path value="DiagnosticReport.result" />
+      <short value="LaboratoryTest" />
+      <definition value="Container of the LaboratoryTest concept. This container contains all data elements of the LaboratoryTest concept." />
+      <alias value="LaboratoriumTest" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult" />
+      </type>
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4255" />
+        <comment value="LaboratoryTest" />
+      </mapping>
+    </element>
+    <element id="DiagnosticReport.conclusion">
+      <path value="DiagnosticReport.conclusion" />
+      <short value="Comment" />
+      <definition value="Comments, such as a textual interpretation or advice accompanying the result, for example." />
+      <alias value="Toelichting" />
+      <mustSupport value="true" />
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4288" />
+        <comment value="Comment" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
