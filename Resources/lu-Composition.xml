@@ -83,7 +83,22 @@
         <map value="lu-concept-v2-4294" />
       </mapping>
     </element>
-    <element id="Composition.section.code">
+    <element id="Composition.section">
+      <path value="Composition.section" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="code" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Composition.section:panel">
+      <path value="Composition.section" />
+      <sliceName value="panel" />
+    </element>
+    <element id="Composition.section:panel.code">
       <path value="Composition.section.code" />
       <binding>
         <strength value="preferred" />
@@ -96,14 +111,50 @@
         <comment value="PanelOrBattery" />
       </mapping>
     </element>
-    <element id="Composition.section.entry">
+    <element id="Composition.section:panel.entry">
       <path value="Composition.section.entry" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:panel.section">
+      <path value="Composition.section.section" />
       <min value="1" />
-      <max value="1" />
+    </element>
+    <element id="Composition.section:panel.section.entry">
+      <path value="Composition.section.section.entry" />
+      <min value="1" />
       <type>
         <code value="Reference" />
-        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult" />
       </type>
+    </element>
+    <element id="Composition.section:battery">
+      <path value="Composition.section" />
+      <sliceName value="battery" />
+    </element>
+    <element id="Composition.section:battery.code">
+      <path value="Composition.section.code" />
+      <binding>
+        <strength value="preferred" />
+        <description value="PanelOrBatteryCodelist" />
+        <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5--20200901000000" />
+      </binding>
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4286" />
+        <comment value="PanelOrBattery" />
+      </mapping>
+    </element>
+    <element id="Composition.section:battery.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult" />
+      </type>
+    </element>
+    <element id="Composition.section:battery.section">
+      <path value="Composition.section.section" />
+      <max value="0" />
     </element>
   </differential>
 </StructureDefinition>
