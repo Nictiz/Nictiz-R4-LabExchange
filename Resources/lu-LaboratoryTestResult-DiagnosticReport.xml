@@ -57,9 +57,9 @@
       </slicing>
       <min value="1" />
     </element>
-    <element id="DiagnosticReport.extension:DiagnosticReportCompositionR5">
+    <element id="DiagnosticReport.extension:diagnosticReportCompositionR5">
       <path value="DiagnosticReport.extension" />
-      <sliceName value="DiagnosticReportCompositionR5" />
+      <sliceName value="diagnosticReportCompositionR5" />
       <short value="Reference to Composition in R5" />
       <definition value="Extensions for converting between R4 and R5 to refer to Composition" />
       <min value="1" />
@@ -69,11 +69,11 @@
         <profile value="http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition" />
       </type>
     </element>
-    <element id="DiagnosticReport.extension:DiagnosticReportCompositionR5.url">
+    <element id="DiagnosticReport.extension:diagnosticReportCompositionR5.url">
       <path value="DiagnosticReport.extension.url" />
       <fixedUri value="http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition" />
     </element>
-    <element id="DiagnosticReport.extension:DiagnosticReportCompositionR5.value[x]">
+    <element id="DiagnosticReport.extension:diagnosticReportCompositionR5.value[x]">
       <path value="DiagnosticReport.extension.value[x]" />
       <type>
         <code value="Reference" />
