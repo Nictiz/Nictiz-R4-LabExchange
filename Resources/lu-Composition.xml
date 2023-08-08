@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-Composition" />
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-Composition" />
-  <version value="3.0.0-beta.2" />
+  <version value="3.0.0-beta.3" />
   <name value="LuComposition" />
   <title value="lu Composition" />
   <status value="draft" />
@@ -26,7 +26,7 @@
   <kind value="resource" />
   <abstract value="false" />
   <type value="Composition" />
-  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Composition" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/clinicaldocument" />
   <derivation value="constraint" />
   <differential>
     <element id="Composition">
@@ -34,25 +34,28 @@
       <short value="Laboratory Report composition" />
       <definition value="A composition is a set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained." />
     </element>
+    <element id="Composition.identifier">
+      <path value="Composition.identifier" />
+      <short value="Version-independent business identifier of the Laboratory Report (setID)" />
+      <definition value="A version-independent  Business identifier of the Laboratory Report (setID). This identifier stays constant as the Laboratory Report may be updated and changed over time." />
+      <min value="1" />
+    </element>
     <element id="Composition.type">
       <path value="Composition.type" />
       <short value="Kind of composition (Laboratory Report)" />
       <definition value="Laboratory Report" />
-    </element>
-    <element id="Composition.type.coding">
-      <path value="Composition.type.coding" />
-      <fixedCoding>
-        <system value="http://loinc.org" />
-        <code value="11502-2" />
-        <display value="Laboratory Report" />
-      </fixedCoding>
+      <patternCodeableConcept>
+        <coding>
+          <system value="http://loinc.org" />
+          <code value="11502-2" />
+        </coding>
+      </patternCodeableConcept>
     </element>
     <element id="Composition.subject">
       <path value="Composition.subject" />
       <min value="1" />
       <type>
         <code value="Reference" />
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Resource" />
         <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient" />
       </type>
       <mapping>
@@ -61,12 +64,42 @@
         <comment value="Patient" />
       </mapping>
     </element>
+    <element id="Composition.author">
+      <path value="Composition.author" />
+      <short value="Who and/or what authored the Laboratory Report" />
+      <definition value="The organization authored the Laboratory Report. This is the same organization that is responsible for the completion of the LaboratoryTestResult." />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/PractitionerRole" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Device" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Patient" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization" />
+      </type>
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4294" />
+        <comment value="Uitvoerder" />
+      </mapping>
+    </element>
     <element id="Composition.section">
       <path value="Composition.section" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="code" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
       <min value="1" />
-      <max value="1" />
     </element>
-    <element id="Composition.section.code">
+    <element id="Composition.section:panel">
+      <path value="Composition.section" />
+      <sliceName value="panel" />
+    </element>
+    <element id="Composition.section:panel.code">
       <path value="Composition.section.code" />
       <binding>
         <strength value="preferred" />
@@ -79,14 +112,50 @@
         <comment value="PanelOrBattery" />
       </mapping>
     </element>
-    <element id="Composition.section.entry">
+    <element id="Composition.section:panel.entry">
       <path value="Composition.section.entry" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:panel.section">
+      <path value="Composition.section.section" />
       <min value="1" />
-      <max value="1" />
+    </element>
+    <element id="Composition.section:panel.section.entry">
+      <path value="Composition.section.section.entry" />
+      <min value="1" />
       <type>
         <code value="Reference" />
-        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult" />
       </type>
+    </element>
+    <element id="Composition.section:battery">
+      <path value="Composition.section" />
+      <sliceName value="battery" />
+    </element>
+    <element id="Composition.section:battery.code">
+      <path value="Composition.section.code" />
+      <binding>
+        <strength value="preferred" />
+        <description value="PanelOrBatteryCodelist" />
+        <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5--20200901000000" />
+      </binding>
+      <mapping>
+        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <map value="lu-concept-v2-4286" />
+        <comment value="PanelOrBattery" />
+      </mapping>
+    </element>
+    <element id="Composition.section:battery.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult" />
+      </type>
+    </element>
+    <element id="Composition.section:battery.section">
+      <path value="Composition.section.section" />
+      <max value="0" />
     </element>
   </differential>
 </StructureDefinition>

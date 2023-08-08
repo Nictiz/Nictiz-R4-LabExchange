@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-LaboratoryTestResult-DiagnosticReport" />
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport" />
-  <version value="3.0.0-beta.2" />
+  <version value="3.0.0-beta.3" />
   <name value="LuLaboratoryTestResultDiagnosticReport" />
   <title value="lu LaboratoryTestResult DiagnosticReport" />
   <status value="draft" />
@@ -46,6 +46,40 @@
         <comment value="LaboratoryTestResult" />
       </mapping>
     </element>
+    <element id="DiagnosticReport.extension">
+      <path value="DiagnosticReport.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="DiagnosticReport.extension:diagnosticReportCompositionR5">
+      <path value="DiagnosticReport.extension" />
+      <sliceName value="diagnosticReportCompositionR5" />
+      <short value="Reference to Composition in R5" />
+      <definition value="Extensions for converting between R4 and R5 to refer to Composition" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition" />
+      </type>
+    </element>
+    <element id="DiagnosticReport.extension:diagnosticReportCompositionR5.url">
+      <path value="DiagnosticReport.extension.url" />
+      <fixedUri value="http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition" />
+    </element>
+    <element id="DiagnosticReport.extension:diagnosticReportCompositionR5.value[x]">
+      <path value="DiagnosticReport.extension.value[x]" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-Composition" />
+      </type>
+    </element>
     <element id="DiagnosticReport.identifier">
       <path value="DiagnosticReport.identifier" />
       <short value="OrderId" />
@@ -63,7 +97,7 @@
     <element id="DiagnosticReport.basedOn">
       <path value="DiagnosticReport.basedOn" />
       <short value="Order details" />
-      <definition value="Ordering provider and order details as part of the order request.&#xD;&#xA;&#xD;&#xA;At the moment of creating this profile, the profile on ServiceRequest is not yet created. Therefore, the sending systems are not yet expected to send a ServiceRequest and receiving systems have to be aware that the definition of ServiceRequest is not yet final and may be different from what they currently receive." />
+      <definition value="Ordering provider and order details as part of the order request.&#xD;&#xA;&#xD;&#xA;At the moment of creating this profile, the lu-profile on ServiceRequest is not yet created. Therefore, the sending systems are not yet expected to send a ServiceRequest. Receiving systems have to be aware that the definition of ServiceRequest is not yet final and may be different from what they currently receive." />
       <alias value="Aanvraaggegevens" />
       <type>
         <code value="Reference" />
@@ -88,46 +122,6 @@
         <comment value="ResultStatus" />
       </mapping>
     </element>
-    <element id="DiagnosticReport.category">
-      <path value="DiagnosticReport.category" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="$this" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-      <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once. The level of granularity is defined by the category concepts in the value set." />
-      <min value="1" />
-      <mustSupport value="true" />
-    </element>
-    <element id="DiagnosticReport.category:laboratoryCategory">
-      <path value="DiagnosticReport.category" />
-      <sliceName value="laboratoryCategory" />
-      <short value="Classification of type of observation" />
-      <definition value="A code that classifies the general type of observation being made." />
-      <min value="1" />
-      <max value="1" />
-      <binding>
-        <strength value="required" />
-      </binding>
-    </element>
-    <element id="DiagnosticReport.category:resultType">
-      <path value="DiagnosticReport.category" />
-      <sliceName value="resultType" />
-      <short value="ResultType" />
-      <definition value="The type of result defines the laboratory specialty under which the test is categorized." />
-      <alias value="ResultaatType" />
-      <binding>
-        <strength value="required" />
-        <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.1--20200901000000" />
-      </binding>
-      <mapping>
-        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
-        <map value="lu-concept-v2-4289" />
-        <comment value="ResultType" />
-      </mapping>
-    </element>
     <element id="DiagnosticReport.code">
       <path value="DiagnosticReport.code" />
       <short value="PanelOrBattery" />
@@ -148,6 +142,7 @@
     <element id="DiagnosticReport.subject">
       <path value="DiagnosticReport.subject" />
       <short value="Patient" />
+      <min value="1" />
       <type>
         <code value="Reference" />
         <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient" />
