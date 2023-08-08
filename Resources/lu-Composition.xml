@@ -37,7 +37,7 @@
     <element id="Composition.identifier">
       <path value="Composition.identifier" />
       <short value="Version-independent business identifier of the Laboratory Report (setID)" />
-      <definition value="A version-independent  Business identifier of the Laboratory Report (setID). This identifier stays constant as the Laboratory Raport may be updated and changed over time." />
+      <definition value="A version-independent  Business identifier of the Laboratory Report (setID). This identifier stays constant as the Laboratory Report may be updated and changed over time." />
       <min value="1" />
     </element>
     <element id="Composition.type">
