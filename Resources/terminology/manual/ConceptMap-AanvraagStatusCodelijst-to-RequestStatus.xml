@@ -1,0 +1,115 @@
+<ConceptMap xmlns="http://hl7.org/fhir">
+  <id value="AanvraagStatusCodelijst-to-RequestStatus"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/concept-bidirectional">
+    <valueBoolean value="false"/>
+  </extension>
+  <url value="http://nictiz.nl/fhir/ConceptMap/AanvraagStatusCodelijst-to-RequestStatus"/>
+  <version value="1.0.0"/>
+  <name value="AanvraagStatusCodelijst_to_RequestStatus"/>
+  <title value="AanvraagStatusCodelijst to RequestStatus"/>
+  <status value="active"/>
+  <publisher value="Nictiz"/>
+  <contact>
+    <name value="Nictiz"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.nictiz.nl"/>
+      <use value="work"/>
+    </telecom>
+  </contact>
+  <description value="Maps AanvraagStatusCodelijst codes as found in the Dutch value set (AanvraagStatusCodelijst) (https://decor.nictiz.nl/ad/#/lu-/terminology/valueset/2.16.840.1.113883.2.4.3.11.60.25.11.414/2022-12-21T00:00:00) to `request-status` codes as found in FHIR R4."/>
+  <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise."/>
+  <sourceCanonical value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.25.11.414--20221221000000"/>
+  <targetCanonical value="http://hl7.org/fhir/ValueSet/request-status"/>
+  <group>
+    <source value="http://snomed.info/sct"/>
+    <target value="http://hl7.org/fhir/request-status">
+      <element>
+        <code value="385644000"/>
+        <display value="Requested"/>
+        <target>
+          <code value="draft"/>
+          <display value="Draft"/>
+          <equivalence value="narrower"/>
+        </target>
+      </element>
+      <element>
+        <code value="397943006"/>
+        <display value="Planned"/>
+        <target>
+          <code value="draft"/>
+          <display value="Draft"/>
+          <equivalence value="narrower"/>
+        </target>
+      </element>
+      <element>
+        <code value="385651009"/>
+        <display value="In progress"/>
+        <target>
+          <code value="active"/>
+          <display value="Active"/>
+          <equivalence value="equivalent"/>
+        </target>
+      </element>
+    </target>
+  </group>
+  <group>
+    <source value="http://terminology.hl7.org/CodeSystem/v3-ActStatus"/>
+    <target value="http://hl7.org/fhir/request-status">
+      <element>
+        <code value="new"/>
+        <display value="new"/>
+        <target>
+          <code value="draft"/>
+          <display value="Draft"/>
+          <equivalence value="narrower"/>
+        </target>
+      </element>
+      <element>
+        <code value="held"/>
+        <display value="held"/>
+        <target>
+          <code value="on-hold"/>
+          <display value="On Hold"/>
+          <equivalence value="equivalent"/>
+        </target>
+      </element>
+      <element>
+        <code value="cancelled"/>
+        <display value="cancelled"/>
+        <target>
+          <code value="revoked"/>
+          <display value="Revoked"/>
+          <equivalence value="equivalent"/>
+        </target>
+      </element>
+      <element>
+        <code value="active"/>
+        <display value="active"/>
+        <target>
+          <code value="active"/>
+          <display value="Active"/>
+          <equivalence value="equal"/>
+        </target>
+      </element>
+      <element>
+        <code value="completed"/>
+        <display value="completed"/>
+        <target>
+          <code value="completed"/>
+          <display value="Completed"/>
+          <equivalence value="equal"/>
+        </target>
+      </element>
+      <element>
+        <code value="aborted"/>
+        <display value="aborted"/>
+        <target>
+          <code value="revoked"/>
+          <display value="Revoked"/>
+          <equivalence value="narrower"/>
+        </target>
+      </element>
+    </target>
+  </group>
+</ConceptMap>
