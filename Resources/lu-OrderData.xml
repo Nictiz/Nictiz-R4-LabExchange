@@ -14,7 +14,7 @@
       <use value="work" />
     </telecom>
   </contact>
-  <description value="The order data defines how information about the requester (aanvrager) and the requested investigation (aangevraagd onderzoek) is captured and exchanged within a healthcare order message." />
+  <description value="The order data defines how information about the requester and the requested investigation is captured and exchanged within a healthcare order message." />
   <purpose value="A derived profile from [ServiceRequest](https://hl7.org/fhir/R4/servicerequest.html) to provide a version better suited for implementation purposes." />
   <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
   <fhirVersion value="4.0.1" />
@@ -31,7 +31,7 @@
   <snapshot>
     <element id="ServiceRequest">
       <path value="ServiceRequest" />
-      <short value="A request for a service to be performed" />
+      <short value="OrderData" />
       <definition value="A record of a request for service such as diagnostic investigations, treatments, or operations to be performed." />
       <alias value="diagnostic request" />
       <alias value="referral" />
@@ -421,7 +421,7 @@
     </element>
     <element id="ServiceRequest.identifier">
       <path value="ServiceRequest.identifier" />
-      <short value="Identifiers assigned to this order" />
+      <short value="OrderId" />
       <definition value="Identifier of the request. This is a number sent with the order and sent back in the result message. The requester assigns an identifier to the order (also known as the Placer Order ID). The performer also assigns an identifier to the order/result (also known as the Filler Order ID)." />
       <comment value="The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the 'Placer' in HL7 v2) and the producer of the observations in response to the order (known as the 'Filler' in HL7 v2).  For further discussion and examples see the resource notes section below." />
       <alias value="Aanvraagnummer" />
@@ -748,9 +748,10 @@
     </element>
     <element id="ServiceRequest.status">
       <path value="ServiceRequest.status" />
-      <short value="requested | planned | in progress | new | held | cancelled | active | completed | aborted" />
+      <short value="Status" />
       <definition value="Status of the request, such as ‘requested’, ‘planned’, 'in progress'" />
-      <comment value="The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](event.html) for general discussion) or using the [Task](task.html) resource." />
+      <comment value="The status can have one of the following values: requested | planned | in progress | new | held | cancelled | active | completed | aborted" />
+      <alias value="Status" />
       <min value="1" />
       <max value="1" />
       <base>
@@ -778,12 +779,8 @@
           <valueString value="ServiceRequestStatus" />
         </extension>
         <strength value="required" />
-        <description value="Use ConceptMap 'AanvraagStatusCodelijst_to_RequestStatus' to translate dataset terminology to profile terminology in ValueSet 'RequestStatus'" />
-        <valueSet value="http://hl7.org/fhir/ValueSet/request-status|4.0.1">
-          <extension url="http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap">
-            <valueCanonical value="http://nictiz.nl/fhir/ConceptMap/AanvraagStatusCodelijst_to_RequestStatus"/>
-          </extension>
-        </valueSet>
+        <description value="Use ConceptMap 'AanvraagStatusCodelijst_to_RequestStatus' to translate terminology from the functional model to profile terminology in ValueSet 'request-status'" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/request-status|4.0.1" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -1033,7 +1030,7 @@
     </element>
     <element id="ServiceRequest.code">
       <path value="ServiceRequest.code" />
-      <short value="What is being requested/ordered" />
+      <short value="ClinicalQuestion" />
       <definition value="Description of the question to which the requester hopes to receive an answer. This is particularly important for actions whose outcome requires interpretation by the implementer." />
       <comment value="Many laboratory and radiology procedure codes embed the specimen/organ system in the test order name, for example,  serum or serum/plasma glucose, or a chest x-ray. The specimen might not be recorded separately from the test code." />
       <alias value="service requested" />
@@ -1456,7 +1453,7 @@
     </element>
     <element id="ServiceRequest.authoredOn">
       <path value="ServiceRequest.authoredOn" />
-      <short value="Date request signed" />
+      <short value="OrderDateTime" />
       <definition value="Date and, if applicable, time the request was made." />
       <alias value="orderedOn" />
       <alias value="AanvraagDatumTijd" />
@@ -1512,8 +1509,8 @@
     </element>
     <element id="ServiceRequest.requester">
       <path value="ServiceRequest.requester" />
-      <short value="Who/what is requesting service" />
-      <definition value="The individual who initiated the request and has responsibility for its activation." />
+      <short value="Requester" />
+      <definition value="The person who ordered the action (procedure, test, etc.)." />
       <comment value="This is not the dispatcher, but rather who is the authorizer.  This element is not intended to handle delegation which would generally be managed through the Provenance resource." />
       <alias value="author" />
       <alias value="orderer" />
@@ -1832,8 +1829,8 @@
     </element>
     <element id="ServiceRequest.reasonCode">
       <path value="ServiceRequest.reasonCode" />
-      <short value="Explanation/Justification for procedure or service" />
-      <definition value="An explanation or justification for why this service is being requested in coded or textual form. This is often for billing purposes.  May relate to the resources referred to in `supportingInfo`." />
+      <short value="OrderReason" />
+      <definition value="An explanation or justification for why this service is being requested in coded or textual form. This is often for billing purposes. May relate to the resources referred to in `supportingInfo`." />
       <comment value="This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.   Use `CodeableConcept.text` element if the data is free (uncoded) text as shown in the [CT Scan example](servicerequest-example-di.html)." />
       <alias value="RedenAanvraag" />
       <min value="0" />
@@ -2368,9 +2365,8 @@
     <element id="ServiceRequest.note">
       <path value="ServiceRequest.note" />
       <short value="Comments" />
-      <definition value="Additional information that is important for the execution of the request and that cannot be described in any of the other elements." />
+      <definition value="Any other notes and comments made about the service request. For example, internal billing notes." />
       <comment value="For systems that do not have structured annotations, they can simply communicate a single annotation with no author or time.  This element may need to be included in narrative because of the potential for modifying information.  *Annotations SHOULD NOT* be used to communicate &quot;modifying&quot; information that could be computable. (This is a SHOULD because enforcing user behavior is nearly impossible)." />
-      <alias value="Opmerking" />
       <min value="0" />
       <max value="1" />
       <base>
@@ -2417,6 +2413,201 @@
       <mapping>
         <identity value="quick" />
         <map value="ClinicalStatement.additionalText" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.note.id">
+      <path value="ServiceRequest.note.id" />
+      <representation value="xmlAttr" />
+      <short value="Unique id for inter-element referencing" />
+      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.note.extension">
+      <path value="ServiceRequest.note.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url" />
+        <rules value="open" />
+      </slicing>
+      <short value="Additional content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.note.author[x]">
+      <path value="ServiceRequest.note.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <comment value="Organization is used when there's no need for specific attribution as to who made the comment." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Annotation.author[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Patient" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
+      </constraint>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.note.time">
+      <path value="ServiceRequest.note.time" />
+      <short value="When the annotation was made" />
+      <definition value="Indicates when this particular annotation was made." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Annotation.time" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="dateTime" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
+      </constraint>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.effectiveTime" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.note.text">
+      <path value="ServiceRequest.note.text" />
+      <short value="Comment" />
+      <definition value="Additional information that is important for the execution of the request and that cannot be described in any of the other elements." />
+      <comment value="Systems are not required to have markdown support, so the text should be readable without markdown processing. The markdown syntax is GFM - see https://github.github.com/gfm/" />
+      <alias value="Opmerking" />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Annotation.text" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="markdown" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
+      </constraint>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.text" />
       </mapping>
       <mapping>
         <identity value="lu-dataset-300-beta2-20230525" />
@@ -2520,6 +2711,7 @@
   <differential>
     <element id="ServiceRequest">
       <path value="ServiceRequest" />
+      <short value="OrderData" />
       <alias value="Aanvraaggegevens" />
       <mapping>
         <identity value="lu-dataset-300-beta2-20230525" />
@@ -2529,6 +2721,7 @@
     </element>
     <element id="ServiceRequest.identifier">
       <path value="ServiceRequest.identifier" />
+      <short value="OrderId" />
       <definition value="Identifier of the request. This is a number sent with the order and sent back in the result message. The requester assigns an identifier to the order (also known as the Placer Order ID). The performer also assigns an identifier to the order/result (also known as the Filler Order ID)." />
       <alias value="Aanvraagnummer" />
       <max value="1" />
@@ -2540,11 +2733,13 @@
     </element>
     <element id="ServiceRequest.status">
       <path value="ServiceRequest.status" />
-      <short value="requested | planned | in progress | new | held | cancelled | active | completed | aborted" />
+      <short value="Status" />
       <definition value="Status of the request, such as ‘requested’, ‘planned’, 'in progress'" />
+      <comment value="The status can have one of the following values: requested | planned | in progress | new | held | cancelled | active | completed | aborted" />
+      <alias value="Status" />
       <binding>
         <strength value="required" />
-        <description value="Use ConceptMap 'AanvraagStatusCodelijst_to_RequestStatus' to translate dataset terminology to profile terminology in ValueSet 'RequestStatus'" />
+        <description value="Use ConceptMap 'AanvraagStatusCodelijst_to_RequestStatus' to translate terminology from the functional model to profile terminology in ValueSet 'request-status'" />
       </binding>
       <mapping>
         <identity value="lu-dataset-300-beta2-20230525" />
@@ -2554,6 +2749,7 @@
     </element>
     <element id="ServiceRequest.code">
       <path value="ServiceRequest.code" />
+      <short value="ClinicalQuestion" />
       <definition value="Description of the question to which the requester hopes to receive an answer. This is particularly important for actions whose outcome requires interpretation by the implementer." />
       <alias value="Vraagstelling" />
       <binding>
@@ -2568,6 +2764,7 @@
     </element>
     <element id="ServiceRequest.authoredOn">
       <path value="ServiceRequest.authoredOn" />
+      <short value="OrderDateTime" />
       <definition value="Date and, if applicable, time the request was made." />
       <alias value="AanvraagDatumTijd" />
       <mapping>
@@ -2578,6 +2775,8 @@
     </element>
     <element id="ServiceRequest.requester">
       <path value="ServiceRequest.requester" />
+      <short value="Requester" />
+      <definition value="The person who ordered the action (procedure, test, etc.)." />
       <comment value="This is not the dispatcher, but rather who is the authorizer.  This element is not intended to handle delegation which would generally be managed through the Provenance resource." />
       <alias value="Zorgverlener" />
       <type>
@@ -2598,7 +2797,8 @@
     </element>
     <element id="ServiceRequest.reasonCode">
       <path value="ServiceRequest.reasonCode" />
-      <definition value="An explanation or justification for why this service is being requested in coded or textual form. This is often for billing purposes.  May relate to the resources referred to in `supportingInfo`." />
+      <short value="OrderReason" />
+      <definition value="An explanation or justification for why this service is being requested in coded or textual form. This is often for billing purposes. May relate to the resources referred to in `supportingInfo`." />
       <alias value="RedenAanvraag" />
       <max value="1" />
       <mapping>
@@ -2617,9 +2817,13 @@
     </element>
     <element id="ServiceRequest.note">
       <path value="ServiceRequest.note" />
+      <max value="1" />
+    </element>
+    <element id="ServiceRequest.note.text">
+      <path value="ServiceRequest.note.text" />
+      <short value="Comment" />
       <definition value="Additional information that is important for the execution of the request and that cannot be described in any of the other elements." />
       <alias value="Opmerking" />
-      <max value="1" />
       <mapping>
         <identity value="lu-dataset-300-beta2-20230525" />
         <map value="lu-concept-v2-4477" />
