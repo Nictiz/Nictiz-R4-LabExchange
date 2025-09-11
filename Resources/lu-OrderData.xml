@@ -2,6 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-OrderData" />
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-OrderData" />
+  <version value="3.0.0-beta.3" />
   <name value="LuOrderData" />
   <title value="lu OrderData" />
   <status value="draft" />

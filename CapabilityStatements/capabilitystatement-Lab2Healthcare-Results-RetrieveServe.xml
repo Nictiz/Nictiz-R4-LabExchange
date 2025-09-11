@@ -4,7 +4,7 @@
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Healthcare-Results-RetrieveServe"/>
     <name value="Lab2Healthcare_Results_RetrieveServe"/>
     <status value="draft"/>
-    <date value="2022-03-30"/>
+    <date value="2025-09-11"/>
     <publisher value="Nictiz"/>
     <contact>
         <name value="Nictiz"/>
