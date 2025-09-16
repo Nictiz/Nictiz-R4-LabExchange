@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CapabilityStatement xmlns="http://hl7.org/fhir">
-    <id value="Lab2Healthcare-Results-SendReceive"/>
+    <id value="CapabilityStatement-Lab2Healthcare-Results-SendReceive"/>
     <text>
         <status value="empty" />
         <div xmlns="http://www.w3.org/1999/xhtml">
@@ -8,7 +8,7 @@
         </div>
     </text>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Healthcare-Results-SendReceive"/>
-    <name value="Lab2Healthcare-Results-SendReceive"/>
+    <name value="Lab2Healthcare_Results_SendReceive"/>
     <status value="draft"/>
     <date value="2025-09-11"/>
     <publisher value="Nictiz"/>
