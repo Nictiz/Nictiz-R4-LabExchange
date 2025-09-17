@@ -24,8 +24,8 @@
     <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise."/>
     <kind value="requirements"/>
     <fhirVersion value="4.0.1"/>
-    <format value="application/xml"/>
-    <format value="application/json"/>
+    <format value="application/fhir+xml"/>
+    <format value="application/fhir+json"/>
     <rest>
         <mode value="client"/>
         <documentation value="A client is expected to support xml and/or json. A client is not required to maintain a record of each server it created resources on, and thus not required to support 'update'."/>

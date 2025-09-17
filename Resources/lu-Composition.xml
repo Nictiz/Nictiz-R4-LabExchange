@@ -47,11 +47,11 @@
     </element>
     <element id="Composition.type.coding">
       <path value="Composition.type.coding"/>
-      <patternCoding>
+      <fixedCoding>
         <system value="http://loinc.org"/>
         <code value="11502-2"/>
         <display value="Laboratory Report" />
-      </patternCoding>
+      </fixedCoding>
     </element>
     <element id="Composition.subject">
       <path value="Composition.subject" />
