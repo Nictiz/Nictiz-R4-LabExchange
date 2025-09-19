@@ -2,11 +2,9 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-OrderData" />
   <text>
-    <status value="empty" />
-    <div xmlns="http://www.w3.org/1999/xhtml">
+    <status value="empty" /><div xmlns="http://www.w3.org/1999/xhtml">
       No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.
-    </div>
-  </text>
+    </div></text>
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-OrderData" />
   <version value="3.0.0-beta.3" />
   <name value="LuOrderData" />
@@ -119,7 +117,12 @@
       <mapping>
         <identity value="lu-dataset-300-beta2-20230525" />
         <map value="lu-concept-v2-4478" />
-        <comment value="Requester" />
+        <comment value="RequesterPractitioner" />
+      </mapping>
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4522" />
+        <comment value="RequesterOrganization" />
       </mapping>
     </element>
     <element id="ServiceRequest.reasonCode">
