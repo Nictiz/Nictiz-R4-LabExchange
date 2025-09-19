@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-Composition" />
+  <text>
+    <status value="empty" />
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.
+    </div>
+  </text>
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-Composition" />
-  <version value="3.0.0-beta.2" />
+  <version value="3.0.0-beta.3" />
   <name value="LuComposition" />
   <title value="lu Composition" />
   <status value="draft" />
@@ -40,12 +46,16 @@
       <definition value="Laboratory Report" />
     </element>
     <element id="Composition.type.coding">
-      <path value="Composition.type.coding" />
-      <fixedCoding>
-        <system value="http://loinc.org" />
-        <code value="11502-2" />
+      <path value="Composition.type.coding"/>
+      <patternCoding>
+        <system value="http://loinc.org"/>
+        <code value="11502-2"/>
         <display value="Laboratory Report" />
-      </fixedCoding>
+      </patternCoding>
+    </element>
+    <element id="Composition.type.coding.system">
+      <path value="Composition.type.coding.system"/>
+      <min value="1"/>
     </element>
     <element id="Composition.subject">
       <path value="Composition.subject" />

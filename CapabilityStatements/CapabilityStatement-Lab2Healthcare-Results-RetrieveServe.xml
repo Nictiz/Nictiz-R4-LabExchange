@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CapabilityStatement xmlns="http://hl7.org/fhir">
-    <id value="Lab2Healthcare-Results-RetrieveServe"/>
+    <id value="CapabilityStatement-Lab2Healthcare-Results-RetrieveServe"/>
+    <text>
+        <status value="empty" />
+        <div xmlns="http://www.w3.org/1999/xhtml">
+        No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.
+        </div>
+    </text>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Healthcare-Results-RetrieveServe"/>
     <name value="Lab2Healthcare_Results_RetrieveServe"/>
     <status value="draft"/>
-    <date value="2022-03-30"/>
+    <date value="2025-09-11"/>
     <publisher value="Nictiz"/>
     <contact>
         <name value="Nictiz"/>
@@ -18,8 +24,8 @@
     <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise."/>
     <kind value="requirements"/>
     <fhirVersion value="4.0.1"/>
-    <format value="xml"/>
-    <format value="json"/>
+    <format value="application/fhir+xml"/>
+    <format value="application/fhir+json"/>
     <rest>
         <mode value="client"/>
         <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on Observation, and MAY support its searchParameters and/or the $lastn operation. It SHALL support read on Observation and secondary resources, when referenced but not included in search results. Note that inclusion of referenced resources may happen regardless of searchInclude by the client."/>

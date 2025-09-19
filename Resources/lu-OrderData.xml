@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="lu-OrderData" />
+  <text>
+    <status value="empty" />
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.
+    </div>
+  </text>
+  <url value="http://nictiz.nl/fhir/StructureDefinition/lu-OrderData" />
+  <version value="3.0.0-beta.3" />
+  <name value="LuOrderData" />
+  <title value="lu OrderData" />
+  <status value="draft" />
+  <publisher value="Nictiz" />
+  <contact>
+    <name value="Nictiz" />
+    <telecom>
+      <system value="url" />
+      <value value="https://www.nictiz.nl" />
+      <use value="work" />
+    </telecom>
+  </contact>
+  <description value="The order data defines how information about the requester and the requested investigation is captured and exchanged within a healthcare order message." />
+  <purpose value="A derived profile from [ServiceRequest](https://hl7.org/fhir/R4/servicerequest.html) to provide a version better suited for implementation purposes." />
+  <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="lu-dataset-300-beta2-20230525" />
+    <uri value="https://decor.nictiz.nl/pub/labuitwisseling/lu-html-20230525T170259/ds-2.16.840.1.113883.2.4.3.11.60.25.1.2-2021-02-22T000000.html" />
+    <name value="ART-DECOR dataset LU 3.0.0-beta.2 20250525" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="ServiceRequest" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/ServiceRequest" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="ServiceRequest">
+      <path value="ServiceRequest" />
+      <short value="OrderData" />
+      <alias value="Aanvraaggegevens" />
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4410" />
+        <comment value="OrderData" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.identifier">
+      <path value="ServiceRequest.identifier" />
+      <short value="OrderId" />
+      <definition value="Identifier of the request. This is a number sent with the order and sent back in the result message. The requester assigns an identifier to the order (also known as the Placer Order ID). The performer also assigns an identifier to the order/result (also known as the Filler Order ID)." />
+      <alias value="Aanvraagnummer" />
+      <max value="1" />
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4473" />
+        <comment value="OrderId" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.status">
+      <path value="ServiceRequest.status" />
+      <short value="Status" />
+      <definition value="Status of the request, such as ‘requested’, ‘planned’, 'in progress'" />
+      <comment value="The status can have one of the following values: requested | planned | in progress | new | held | cancelled | active | completed | aborted" />
+      <alias value="Status" />
+      <binding>
+        <strength value="required" />
+        <description value="Use ConceptMap 'AanvraagStatusCodelijst_to_RequestStatus' to translate terminology from the functional model to profile terminology in ValueSet 'request-status'" />
+      </binding>
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4476" />
+        <comment value="Status" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.code">
+      <path value="ServiceRequest.code" />
+      <short value="ClinicalQuestion" />
+      <definition value="Description of the question to which the requester hopes to receive an answer. This is particularly important for actions whose outcome requires interpretation by the implementer." />
+      <alias value="Vraagstelling" />
+      <binding>
+        <strength value="required" />
+        <valueSet value="https://decor.nictiz.nl/fhir/4.0/zib2020bbr-/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.7--20200901000000" />
+      </binding>
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4475" />
+        <comment value="ClinicalQuestion" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.authoredOn">
+      <path value="ServiceRequest.authoredOn" />
+      <short value="OrderDateTime" />
+      <definition value="Date and, if applicable, time the request was made." />
+      <alias value="AanvraagDatumTijd" />
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4472" />
+        <comment value="OrderDateTime" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.requester">
+      <path value="ServiceRequest.requester" />
+      <short value="Requester" />
+      <definition value="The person who ordered the action (procedure, test, etc.)." />
+      <comment value="This is not the dispatcher, but rather who is the authorizer.  This element is not intended to handle delegation which would generally be managed through the Provenance resource." />
+      <alias value="Zorgverlener" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/PractitionerRole" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Patient" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Device" />
+      </type>
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4478" />
+        <comment value="Requester" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.reasonCode">
+      <path value="ServiceRequest.reasonCode" />
+      <short value="OrderReason" />
+      <definition value="An explanation or justification for why this service is being requested in coded or textual form. This is often for billing purposes. May relate to the resources referred to in `supportingInfo`." />
+      <alias value="RedenAanvraag" />
+      <max value="1" />
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4474" />
+        <comment value="OrderReason" />
+      </mapping>
+    </element>
+    <element id="ServiceRequest.reasonCode.coding">
+      <path value="ServiceRequest.reasonCode.coding" />
+      <max value="0" />
+    </element>
+    <element id="ServiceRequest.reasonCode.text">
+      <path value="ServiceRequest.reasonCode.text" />
+      <definition value="Context of the request, which is relevant to its execution." />
+    </element>
+    <element id="ServiceRequest.note">
+      <path value="ServiceRequest.note" />
+      <max value="1" />
+    </element>
+    <element id="ServiceRequest.note.text">
+      <path value="ServiceRequest.note.text" />
+      <short value="Comment" />
+      <definition value="Additional information that is important for the execution of the request and that cannot be described in any of the other elements." />
+      <alias value="Opmerking" />
+      <mapping>
+        <identity value="lu-dataset-300-beta2-20230525" />
+        <map value="lu-concept-v2-4477" />
+        <comment value="Comment" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
