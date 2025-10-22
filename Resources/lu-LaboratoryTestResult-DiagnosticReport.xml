@@ -44,7 +44,7 @@
     <element id="DiagnosticReport">
       <path value="DiagnosticReport" />
       <short value="LaboratoryTestResult" />
-      <definition value="At the time of creation, there is no nl-core DiagnosticReport profile available as there are no other use cases identified for a nl-core profile to be relevant. This profile shall only be used for the designated use case (&quot;Health professional receives lab results resulting from a request&quot;).  It is derived from the FHIR R4 core and contains references to nl-core profiles." />
+      <definition value="At the time of creation, there is no nl-core DiagnosticReport profile available as there are no other use cases identified for a nl-core profile to be relevant. This profile shall only be used for the designated use cases (&quot;Health professional receives lab results resulting from a request&quot;, &quot;Patient retrieves laboratory results in their PGO&quot;).  It is derived from the FHIR R4 core and contains references to nl-core profiles." />
       <alias value="LaboratoriumUitslag" />
       <mapping>
         <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
@@ -68,18 +68,19 @@
     </element>
     <element id="DiagnosticReport.basedOn">
       <path value="DiagnosticReport.basedOn" />
-      <short value="Order details" />
-      <definition value="Ordering provider and order details as part of the order request.&#xD;&#xA;&#xD;&#xA;At the moment of creating this profile, the profile on ServiceRequest is not yet created. Therefore, the sending systems are not yet expected to send a ServiceRequest and receiving systems have to be aware that the definition of ServiceRequest is not yet final and may be different from what they currently receive." />
+      <short value="Order data" />
+      <definition value="Ordering provider and order data as part of the order request." />
       <alias value="Aanvraaggegevens" />
       <type>
         <code value="Reference" />
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-OrderData" />
       </type>
       <mustSupport value="true" />
       <mapping>
         <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
         <map value="lu-concept-v2-4410" />
-        <comment value="Order details" />
+        <comment value="OrderData" />
       </mapping>
     </element>
     <element id="DiagnosticReport.status">
