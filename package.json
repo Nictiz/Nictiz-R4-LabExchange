@@ -1,6 +1,6 @@
 {
     "name": "nictiz.fhir.nl.r4.labexchange",
-    "version": "3.0.0-beta.3",
+    "version": "3.0.0-beta.4",
     "canonical": null,
     "url": "https://informatiestandaarden.nictiz.nl/wiki/Landingspagina_Labuitwisseling",
     "title": "Nictiz FHIR NL R4 Lab Exchange",
