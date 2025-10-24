@@ -8,7 +8,7 @@
     </div>
   </text>
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-Composition" />
-  <version value="3.0.0-beta.3" />
+  <version value="3.0.0-beta.4" />
   <name value="LuComposition" />
   <title value="lu Composition" />
   <status value="draft" />
