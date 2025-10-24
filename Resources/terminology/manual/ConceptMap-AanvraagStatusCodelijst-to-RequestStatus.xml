@@ -23,7 +23,7 @@
   <targetCanonical value="http://hl7.org/fhir/ValueSet/request-status"/>
   <group>
     <source value="http://snomed.info/sct"/>
-    <target value="http://hl7.org/fhir/request-status">
+    <target value="http://hl7.org/fhir/request-status"/>
       <element>
         <code value="385644000"/>
         <display value="Requested"/>
@@ -51,11 +51,10 @@
           <equivalence value="equivalent"/>
         </target>
       </element>
-    </target>
   </group>
   <group>
     <source value="http://terminology.hl7.org/CodeSystem/v3-ActStatus"/>
-    <target value="http://hl7.org/fhir/request-status">
+    <target value="http://hl7.org/fhir/request-status"/>
       <element>
         <code value="new"/>
         <display value="new"/>
@@ -110,6 +109,5 @@
           <equivalence value="narrower"/>
         </target>
       </element>
-    </target>
   </group>
 </ConceptMap>
