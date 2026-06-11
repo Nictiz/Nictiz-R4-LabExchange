@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+    <id value="CapabilityStatement-Lab2Patient-Results-RetrieveServe"/>
+    <text>
+        <status value="empty" />
+        <div xmlns="http://www.w3.org/1999/xhtml">
+        No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.
+        </div>
+    </text>
+    <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Patient-Results-RetrieveServe"/>
+    <name value="Lab2Patient_Results_RetrieveServe"/>
+    <status value="draft"/>
+    <date value="2025-09-11"/>
+    <publisher value="Nictiz"/>
+    <contact>
+        <name value="Nictiz"/>
+        <telecom>
+            <system value="email"/>
+            <value value="info@nictiz.nl"/>
+            <use value="work"/>
+        </telecom>
+    </contact>
+    <description value="This CapabilityStatement describes the minimal requirements for a client and a server to fulfill the Lab2Patient use case for retrieving/serving lab results."/>
+    <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise."/>
+    <kind value="requirements"/>
+    <fhirVersion value="4.0.1"/>
+    <format value="application/fhir+xml"/>
+    <format value="application/fhir+json"/>
+    <rest>
+        <mode value="client"/>
+        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on DiagnosticReport. It SHALL support read on DiagnosticReport and secondary resources, when referenced but not included in search results. Note that inclusion of referenced resources may happen regardless of searchInclude by the client."/>
+        <resource>
+            <type value="DiagnosticReport"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <code value="search-type"/>
+            </interaction>
+            <searchInclude value="DiagnosticReport:basedOn">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:subject">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:specimen">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:performer">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:result">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="result.category"/>
+                <type value="token"/>
+                <documentation value="Clients SHALL use this parameter with fixed value http://terminology.hl7.org/CodeSystem/observation-category|laboratory."/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="result.code"/>
+                <type value="token"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="result.date"/>
+                <type value="date"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="_count"/>
+                <type value="number"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="_sort"/>
+                <type value="string"/>
+            </searchParam>
+        </resource>
+        <resource>
+            <type value="Observation"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Patient"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Organization"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Practitioner"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="PractitionerRole"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Specimen"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Device"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="ServiceRequest"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-OrderData"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+    </rest>
+    <rest>
+        <mode value="server"/>
+        <documentation value="A server is expected to support both xml and json. It SHALL support search-type on DiagnosticReport and the listed searchParameters. It SHALL support read on DiagnosticReport and secondary resources, unless it includes those when they are referenced in search results"/>
+        <resource>
+            <type value="DiagnosticReport"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <code value="search-type"/>
+            </interaction>
+            <searchInclude value="DiagnosticReport:result">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:subject">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:specimen">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:performer">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="DiagnosticReport:basedOn">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+            </searchInclude>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="result.code"/>
+                <type value="token"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="result.date"/>
+                <type value="date"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="result.category"/>
+                <type value="token"/>
+                <documentation value="Servers SHALL support this parameter with fixed value http://terminology.hl7.org/CodeSystem/observation-category|laboratory."/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="_count"/>
+                <type value="number"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+                <name value="_sort"/>
+                <type value="string"/>
+            </searchParam>
+        </resource>
+        <resource>
+            <type value="Observation"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Patient"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Organization"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Practitioner"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="PractitionerRole"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Specimen"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="Device"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen.Source"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+        <resource>
+            <type value="ServiceRequest"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-OrderData"/>
+            <interaction>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <code value="read"/>
+            </interaction>
+        </resource>
+    </rest>
+</CapabilityStatement>
