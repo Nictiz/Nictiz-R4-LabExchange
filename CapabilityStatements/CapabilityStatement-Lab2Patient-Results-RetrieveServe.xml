@@ -10,7 +10,7 @@
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Patient-Results-RetrieveServe"/>
     <name value="Lab2Patient_Results_RetrieveServe"/>
     <status value="draft"/>
-    <date value="2025-09-11"/>
+    <date value="2026-06-16"/>
     <publisher value="Nictiz"/>
     <contact>
         <name value="Nictiz"/>
