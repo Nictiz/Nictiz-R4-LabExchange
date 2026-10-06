@@ -9,7 +9,7 @@
     </text>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Patient-Results-RetrieveServe"/>
     <name value="Lab2Patient_Results_RetrieveServe"/>
-    <status value="draft"/>
+    <status value="active"/>
     <date value="2026-06-16"/>
     <publisher value="Nictiz"/>
     <contact>
@@ -28,10 +28,10 @@
     <format value="application/fhir+json"/>
     <rest>
         <mode value="client"/>
-        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on DiagnosticReport. It SHALL support read on DiagnosticReport and secondary resources, when referenced but not included in search results. Note that inclusion of referenced resources may happen regardless of searchInclude by the client."/>
+        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on Observation. It SHALL support read on Observation and secondary resources, when referenced but not included in search results. Note that inclusion of referenced resources may happen regardless of searchInclude by the client."/>
         <resource>
-            <type value="DiagnosticReport"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport"/>
+            <type value="Observation"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
@@ -44,27 +44,22 @@
                 </extension>
                 <code value="search-type"/>
             </interaction>
-            <searchInclude value="DiagnosticReport:basedOn">
+            <searchInclude value="Observation:basedOn">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:subject">
+            <searchInclude value="Observation:subject">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:specimen">
+            <searchInclude value="Observation:specimen">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:performer">
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="MAY"/>
-                </extension>
-            </searchInclude>
-            <searchInclude value="DiagnosticReport:result">
+            <searchInclude value="Observation:performer">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
@@ -189,10 +184,10 @@
     </rest>
     <rest>
         <mode value="server"/>
-        <documentation value="A server is expected to support both xml and json. It SHALL support search-type on DiagnosticReport and the listed searchParameters. It SHALL support read on DiagnosticReport and secondary resources, unless it includes those when they are referenced in search results"/>
+        <documentation value="A server is expected to support both xml and json. It SHALL support search-type on Observation and the listed searchParameters. It SHALL support read on Observation and secondary resources, unless it includes those when they are referenced in search results"/>
         <resource>
-            <type value="DiagnosticReport"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport"/>
+            <type value="Observation"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
@@ -205,27 +200,22 @@
                 </extension>
                 <code value="search-type"/>
             </interaction>
-            <searchInclude value="DiagnosticReport:result">
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
-                </extension>
-            </searchInclude>
-            <searchInclude value="DiagnosticReport:subject">
+            <searchInclude value="Observation:subject">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:specimen">
+            <searchInclude value="Observation:specimen">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:performer">
+            <searchInclude value="Observation:performer">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:basedOn">
+            <searchInclude value="Observation:basedOn">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
