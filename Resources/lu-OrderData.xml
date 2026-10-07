@@ -24,9 +24,9 @@
   <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
   <fhirVersion value="4.0.1" />
   <mapping>
-    <identity value="lu-dataset-300-beta2-20230525" />
-    <uri value="https://decor.nictiz.nl/pub/labuitwisseling/lu-html-20230525T170259/ds-2.16.840.1.113883.2.4.3.11.60.25.1.2-2021-02-22T000000.html" />
-    <name value="ART-DECOR dataset LU 3.0.0-beta.2 20250525" />
+    <identity value="lu-dataset-laboratory-exchange-20210222" />
+    <uri value="https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00" />
+    <name value="ART-DECOR Dataset Laboratory Exchange 2021-02-22" />
   </mapping>
   <kind value="resource" />
   <abstract value="false" />
@@ -39,7 +39,7 @@
       <short value="OrderData" />
       <alias value="Aanvraaggegevens" />
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4410" />
         <comment value="OrderData" />
       </mapping>
@@ -51,7 +51,7 @@
       <alias value="Aanvraagnummer" />
       <max value="1" />
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4473" />
         <comment value="OrderId" />
       </mapping>
@@ -67,7 +67,7 @@
         <description value="Use ConceptMap 'AanvraagStatusCodelijst_to_RequestStatus' to translate terminology from the functional model to profile terminology in ValueSet 'request-status'" />
       </binding>
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4476" />
         <comment value="Status" />
       </mapping>
@@ -82,7 +82,7 @@
         <valueSet value="https://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.7--20200901000000" />
       </binding>
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4475" />
         <comment value="ClinicalQuestion" />
       </mapping>
@@ -93,7 +93,7 @@
       <definition value="Date and, if applicable, time the request was made." />
       <alias value="AanvraagDatumTijd" />
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4472" />
         <comment value="OrderDateTime" />
       </mapping>
@@ -115,12 +115,12 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Device" />
       </type>
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4478" />
         <comment value="RequesterPractitioner" />
       </mapping>
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4522" />
         <comment value="RequesterOrganization" />
       </mapping>
@@ -132,7 +132,7 @@
       <alias value="RedenAanvraag" />
       <max value="1" />
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4474" />
         <comment value="OrderReason" />
       </mapping>

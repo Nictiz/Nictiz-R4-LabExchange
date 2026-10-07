@@ -2,11 +2,9 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="lu-Composition" />
   <text>
-    <status value="empty" />
-    <div xmlns="http://www.w3.org/1999/xhtml">
+    <status value="empty" /><div xmlns="http://www.w3.org/1999/xhtml">
       No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.
-    </div>
-  </text>
+    </div></text>
   <url value="http://nictiz.nl/fhir/StructureDefinition/lu-Composition" />
   <version value="4.0.0-beta.3" />
   <name value="LuComposition" />
@@ -25,7 +23,7 @@
   <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise." />
   <fhirVersion value="4.0.1" />
   <mapping>
-    <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+    <identity value="lu-dataset-laboratory-exchange-20210222" />
     <uri value="https://decor.nictiz.nl/ad/#/lu-/datasets/dataset/2.16.840.1.113883.2.4.3.11.60.25.1.2/2021-02-22T00:00:00" />
     <name value="ART-DECOR Dataset Laboratory Exchange 2021-02-22" />
   </mapping>
@@ -46,16 +44,16 @@
       <definition value="Laboratory Report" />
     </element>
     <element id="Composition.type.coding">
-      <path value="Composition.type.coding"/>
+      <path value="Composition.type.coding" />
       <patternCoding>
-        <system value="http://loinc.org"/>
-        <code value="11502-2"/>
+        <system value="http://loinc.org" />
+        <code value="11502-2" />
         <display value="Laboratory Report" />
       </patternCoding>
     </element>
     <element id="Composition.type.coding.system">
-      <path value="Composition.type.coding.system"/>
-      <min value="1"/>
+      <path value="Composition.type.coding.system" />
+      <min value="1" />
     </element>
     <element id="Composition.subject">
       <path value="Composition.subject" />
@@ -66,7 +64,7 @@
         <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient" />
       </type>
       <mapping>
-        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4303" />
         <comment value="Patient" />
       </mapping>
@@ -84,7 +82,7 @@
         <valueSet value="http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.5--20200901000000" />
       </binding>
       <mapping>
-        <identity value="lu-dataset-laboratory-exchange-2021-02-22" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4286" />
         <comment value="PanelOrBattery" />
       </mapping>
