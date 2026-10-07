@@ -9,8 +9,8 @@
     </text>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Healthcare-Results-RetrieveServe"/>
     <name value="Lab2Healthcare_Results_RetrieveServe"/>
-    <status value="draft"/>
-    <date value="2025-09-11"/>
+    <status value="active"/>
+    <date value="2026-10-06"/>
     <publisher value="Nictiz"/>
     <contact>
         <name value="Nictiz"/>
