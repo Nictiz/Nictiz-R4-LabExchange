@@ -112,6 +112,7 @@
       <mapping>
         <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4258" />
+        <comment value="TestDateTime" />
       </mapping>
     </element>
     <element id="Observation.performer:responsibleLaboratory">
