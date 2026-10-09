@@ -9,8 +9,8 @@
     </text>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Patient-Results-RetrieveServe"/>
     <name value="Lab2Patient_Results_RetrieveServe"/>
-    <status value="draft"/>
-    <date value="2026-06-16"/>
+    <status value="active"/>
+    <date value="2026-10-09"/>
     <publisher value="Nictiz"/>
     <contact>
         <name value="Nictiz"/>
@@ -28,10 +28,10 @@
     <format value="application/fhir+json"/>
     <rest>
         <mode value="client"/>
-        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on DiagnosticReport. It SHALL support read on DiagnosticReport and secondary resources, when referenced but not included in search results. Note that inclusion of referenced resources may happen regardless of searchInclude by the client."/>
+        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on Observation. The client SHALL request Observation:subject and Observation:performer in the Observation search. The client SHALL not depend on additional read requests for resources covered by SHALL includes. Observation:specimen and Observation:basedOn MAY be requested when required by the use case. The client SHOULD NOT request _include:iterate=Specimen:subject:Device."/>
         <resource>
-            <type value="DiagnosticReport"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport"/>
+            <type value="Observation"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
@@ -44,27 +44,22 @@
                 </extension>
                 <code value="search-type"/>
             </interaction>
-            <searchInclude value="DiagnosticReport:basedOn">
+            <searchInclude value="Observation:subject">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:performer">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:basedOn">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:subject">
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="MAY"/>
-                </extension>
-            </searchInclude>
-            <searchInclude value="DiagnosticReport:specimen">
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="MAY"/>
-                </extension>
-            </searchInclude>
-            <searchInclude value="DiagnosticReport:performer">
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="MAY"/>
-                </extension>
-            </searchInclude>
-            <searchInclude value="DiagnosticReport:result">
+            <searchInclude value="Observation:specimen">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
@@ -73,7 +68,7 @@
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
                 </extension>
-                <name value="result.category"/>
+                <name value="category"/>
                 <type value="token"/>
                 <documentation value="Clients SHALL use this parameter with fixed value http://terminology.hl7.org/CodeSystem/observation-category|laboratory."/>
             </searchParam>
@@ -81,14 +76,14 @@
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
-                <name value="result.code"/>
+                <name value="code"/>
                 <type value="token"/>
             </searchParam>
             <searchParam>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
-                <name value="result.date"/>
+                <name value="date"/>
                 <type value="date"/>
             </searchParam>
             <searchParam>
@@ -102,19 +97,18 @@
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
-                <name value="_sort"/>
-                <type value="string"/>
+                <name value="max"/>
+                <type value="number"/>
+                <documentation value="Relevant only for operation $lastn"/>
             </searchParam>
-        </resource>
-        <resource>
-            <type value="Observation"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
-            <interaction>
+            <operation>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
-                <code value="read"/>
-            </interaction>
+                <name value="lastn"/>
+                <definition value="http://hl7.org/fhir/OperationDefinition/Observation-lastn"/>
+                <documentation value="Last N Observations Query"/>
+            </operation>
         </resource>
         <resource>
             <type value="Patient"/>
@@ -189,10 +183,10 @@
     </rest>
     <rest>
         <mode value="server"/>
-        <documentation value="A server is expected to support both xml and json. It SHALL support search-type on DiagnosticReport and the listed searchParameters. It SHALL support read on DiagnosticReport and secondary resources, unless it includes those when they are referenced in search results"/>
+        <documentation value="A server is expected to support both xml and json. It SHALL support search-type on Observation. It SHALL support _include=Observation:subject and _include=Observation:performer. When these references are present and resolvable, the referenced resources SHALL be returned in the Observation SearchResponse. The server SHOULD support _include:iterate=PractitionerRole:organization. The server MAY support _include=Observation:specimen and _include=Observation:basedOn. The server SHALL NOT be required to support _include:iterate=Specimen:subject:Device. Additional read requests are not required for resources covered by SHALL includes."/>
         <resource>
-            <type value="DiagnosticReport"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult-DiagnosticReport"/>
+            <type value="Observation"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
@@ -205,27 +199,22 @@
                 </extension>
                 <code value="search-type"/>
             </interaction>
-            <searchInclude value="DiagnosticReport:result">
+            <searchInclude value="Observation:subject">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:subject">
+            <searchInclude value="Observation:performer">
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="SHALL"/>
+                </extension>
+            </searchInclude>
+            <searchInclude value="Observation:specimen">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
-            <searchInclude value="DiagnosticReport:specimen">
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="MAY"/>
-                </extension>
-            </searchInclude>
-            <searchInclude value="DiagnosticReport:performer">
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="MAY"/>
-                </extension>
-            </searchInclude>
-            <searchInclude value="DiagnosticReport:basedOn">
+            <searchInclude value="Observation:basedOn">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
@@ -234,48 +223,47 @@
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
                 </extension>
-                <name value="result.code"/>
-                <type value="token"/>
-            </searchParam>
-            <searchParam>
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
-                </extension>
-                <name value="result.date"/>
-                <type value="date"/>
-            </searchParam>
-            <searchParam>
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
-                </extension>
-                <name value="result.category"/>
+                <name value="category"/>
                 <type value="token"/>
                 <documentation value="Servers SHALL support this parameter with fixed value http://terminology.hl7.org/CodeSystem/observation-category|laboratory."/>
             </searchParam>
             <searchParam>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="code"/>
+                <type value="token"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
+                </extension>
+                <name value="date"/>
+                <type value="date"/>
+            </searchParam>
+            <searchParam>
+                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+                    <valueCode value="MAY"/>
                 </extension>
                 <name value="_count"/>
                 <type value="number"/>
             </searchParam>
             <searchParam>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
+                    <valueCode value="MAY"/>
                 </extension>
-                <name value="_sort"/>
-                <type value="string"/>
+                <name value="max"/>
+                <type value="number"/>
+                <documentation value="Relevant only for operation $lastn"/>
             </searchParam>
-        </resource>
-        <resource>
-            <type value="Observation"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
-            <interaction>
+            <operation>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="MAY"/>
                 </extension>
-                <code value="read"/>
-            </interaction>
+                <name value="lastn"/>
+                <definition value="http://hl7.org/fhir/OperationDefinition/Observation-lastn"/>
+                <documentation value="Last N Observations Query"/>
+            </operation>
         </resource>
         <resource>
             <type value="Patient"/>

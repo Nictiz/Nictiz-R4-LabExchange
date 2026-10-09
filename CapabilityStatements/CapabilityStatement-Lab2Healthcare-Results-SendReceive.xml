@@ -9,8 +9,8 @@
     </text>
     <url value="http://nictiz.nl/fhir/CapabilityStatement/Lab2Healthcare-Results-SendReceive"/>
     <name value="Lab2Healthcare_Results_SendReceive"/>
-    <status value="draft"/>
-    <date value="2025-09-11"/>
+    <status value="active"/>
+    <date value="2026-10-09"/>
     <publisher value="Nictiz"/>
     <contact>
         <name value="Nictiz"/>
@@ -31,7 +31,7 @@
         <documentation value="A client is expected to support xml and/or json. A client is not required to maintain a record of each server it created resources on, and thus not required to support 'update'."/>
         <resource>
             <type value="Observation"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
@@ -77,27 +77,6 @@
                 <code value="update"/>
             </interaction>
         </resource>
-        <!--<resource>
-            <type value="Location"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider"/>
-            <interaction>
-                <code value="read"/>
-            </interaction>
-        </resource>
-        <resource>
-            <type value="Practitioner"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
-            <interaction>
-                <code value="read"/>
-            </interaction>
-        </resource>
-        <resource>
-            <type value="PractitionerRole"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"/>
-            <interaction>
-                <code value="read"/>
-            </interaction>
-        </resource>-->
         <resource>
             <type value="Specimen"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
@@ -136,7 +115,7 @@
         <documentation value="A server is expected to support xml and json. A server SHOULD be able to process 'create' as 'update' requests when it already has that resource. A server SHALL support create on Observation and Organization (Observation.performer). A server is expected to have a pre-existing Patient resource it MAY update. Create/update of other resources MAY be supported, but they are not, then references to them SHALL NOT be processed."/>
         <resource>
             <type value="Observation"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult"/>
+            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
                     <valueCode value="SHALL"/>
@@ -198,27 +177,6 @@
                 <documentation value="A server SHALL make sure it connects results to the correct Organization. The server may read its own Organization resource to that end, and/or resolve it from the client"/>
             </interaction>
         </resource>
-        <!--<resource>
-            <type value="Location"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider"/>
-            <interaction>
-                <code value="read"/>
-            </interaction>
-        </resource>
-        <resource>
-            <type value="Practitioner"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
-            <interaction>
-                <code value="read"/>
-            </interaction>
-        </resource>
-        <resource>
-            <type value="PractitionerRole"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"/>
-            <interaction>
-                <code value="read"/>
-            </interaction>
-        </resource>-->
         <resource>
             <type value="Specimen"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-LaboratoryTestResult.Specimen"/>
