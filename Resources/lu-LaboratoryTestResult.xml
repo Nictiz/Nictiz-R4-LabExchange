@@ -193,9 +193,23 @@
         <comment value="ReferenceRangeUpperLimit" />
       </mapping>
     </element>
+    <element id="Observation.hasMember">
+      <path value="Observation.hasMember" />
+      <slicing>
+        <discriminator>
+          <type value="profile" />
+          <path value="resolve()" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
     <element id="Observation.hasMember:laboratoryTest">
       <path value="Observation.hasMember" />
       <sliceName value="laboratoryTest" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult" />
+      </type>
       <mapping>
         <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4255" />
