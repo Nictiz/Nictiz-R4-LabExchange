@@ -155,7 +155,7 @@
       <definition value="Additional information that is important for the execution of the request and that cannot be described in any of the other elements." />
       <alias value="Opmerking" />
       <mapping>
-        <identity value="lu-dataset-300-beta2-20230525" />
+        <identity value="lu-dataset-laboratory-exchange-20210222" />
         <map value="lu-concept-v2-4477" />
         <comment value="Comment" />
       </mapping>
