@@ -266,16 +266,6 @@
             </operation>
         </resource>
         <resource>
-            <type value="Observation"/>
-            <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
-            <interaction>
-                <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="MAY"/>
-                </extension>
-                <code value="read"/>
-            </interaction>
-        </resource>
-        <resource>
             <type value="Patient"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
             <interaction>
