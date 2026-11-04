@@ -24,8 +24,8 @@
     <copyright value="Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise."/>
     <kind value="requirements"/>
     <fhirVersion value="4.0.1"/>
-    <format value="application/fhir+xml"/>
-    <format value="application/fhir+json"/>
+    <format value="xml"/>
+    <format value="json"/>
     <rest>
         <mode value="client"/>
         <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on Observation. Observation:subject, Observation:performer, Observation:specimen and Observation:basedOn MAY be requested when required by the use case. The client SHOULD NOT request _include:iterate=Specimen:subject:Device."/>
