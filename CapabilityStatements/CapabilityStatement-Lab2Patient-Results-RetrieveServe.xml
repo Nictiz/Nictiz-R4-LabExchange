@@ -28,13 +28,13 @@
     <format value="application/fhir+json"/>
     <rest>
         <mode value="client"/>
-        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on Observation. The client SHALL request Observation:subject and Observation:performer in the Observation search. The client SHALL not depend on additional read requests for resources covered by SHALL includes. Observation:specimen and Observation:basedOn MAY be requested when required by the use case. The client SHOULD NOT request _include:iterate=Specimen:subject:Device."/>
+        <documentation value="A client is expected to support xml and/or json. It SHALL support search-type on Observation. Observation:subject, Observation:performer, Observation:specimen and Observation:basedOn MAY be requested when required by the use case. The client SHOULD NOT request _include:iterate=Specimen:subject:Device."/>
         <resource>
             <type value="Observation"/>
             <supportedProfile value="http://nictiz.nl/fhir/StructureDefinition/lu-LaboratoryTestResult"/>
             <interaction>
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
+                    <valueCode value="SHOULD"/>
                 </extension>
                 <code value="read"/>
             </interaction>
@@ -46,12 +46,12 @@
             </interaction>
             <searchInclude value="Observation:subject">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
+                    <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
             <searchInclude value="Observation:performer">
                 <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
-                    <valueCode value="SHALL"/>
+                    <valueCode value="MAY"/>
                 </extension>
             </searchInclude>
             <searchInclude value="Observation:basedOn">
