@@ -13,7 +13,7 @@ issues should occur: false
 
 "CapabilityStatement-*":
   ignored issues:
-    "CapabilityStatement.format":
+    "CapabilityStatement.format[*]":
       - message: "The System URI could not be determined for the code 'application/fhir+xml' in the ValueSet 'http://hl7.org/fhir/ValueSet/mimetypes|4.0.1'"
         reason: This is an error in the tooling
       - message: "The value provided ('application/fhir+xml') was not found in the value set 'MimeType' (http://hl7.org/fhir/ValueSet/mimetypes|4.0.1), and a code is required from this value set  (error message = The System URI could not be determined for the code 'application/fhir+json' in the ValueSet 'http://hl7.org/fhir/ValueSet/mimetypes|4.0.1'"
