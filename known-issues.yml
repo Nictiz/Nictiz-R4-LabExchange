@@ -3,3 +3,22 @@
 # For each issue documented, a reason for deviating from the guidelines is given.
 
 issues should occur: true
+
+---
+# The following issues are not "real" deviations stemming from design choices, but rather problems that pop up due to
+# shortcomings in tooling, the used terminology server, etc.
+# These might occur in one or more profiles, or in none if they have been fixed in the meantime. 
+
+issues should occur: false
+
+"CapabilityStatements/CapabilityStatement-*":
+  ignored issues:
+    "CapabilityStatement.format[*]":
+      - message: "The System URI could not be determined for the code 'application/xml' in the ValueSet 'http://hl7.org/fhir/ValueSet/mimetypes|4.0.1'"
+        reason: This is an error in the tooling
+      - message: "The value provided ('application/xml') was not found in the value set 'MimeType' (http://hl7.org/fhir/ValueSet/mimetypes|4.0.1), and a code is required from this value set  (error message = The System URI could not be determined for the code 'application/json' in the ValueSet 'http://hl7.org/fhir/ValueSet/mimetypes|4.0.1'"
+        reason: This is an error in the tooling
+      - message: "The System URI could not be determined for the code 'application/json' in the ValueSet 'http://hl7.org/fhir/ValueSet/mimetypes|4.0.1'"
+        reason: This is an error in the tooling
+      - message: "The value provided ('application/json') was not found in the value set 'MimeType' (http://hl7.org/fhir/ValueSet/mimetypes|4.0.1), and a code is required from this value set  (error message = The System URI could not be determined for the code 'application/json' in the ValueSet 'http://hl7.org/fhir/ValueSet/mimetypes|4.0.1'"
+        reason: This is an error in the tooling
