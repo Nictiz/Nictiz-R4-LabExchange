@@ -11,7 +11,7 @@ issues should occur: true
 
 issues should occur: false
 
-"CapabilityStatement-*":
+"CapabilityStatements/CapabilityStatement-*":
   ignored issues:
     "CapabilityStatement.format[*]":
       - message: "The System URI could not be determined for the code 'application/fhir+xml' in the ValueSet 'http://hl7.org/fhir/ValueSet/mimetypes|4.0.1'"
